@@ -33,59 +33,58 @@ div {
   padding: 10px;
 }
 
-
-
 .hero {
   padding: 20px;
-  height:84vh;
+  height:80vh;
   background-color: #141414;
   color: #ffffff;
   font-family: sans-serif;
-
 }
 .conteinerHero {
-
   display: flex;
   justify-content: space-between;
- 
+  height: 80%;
 }
 .tituloHero{
   justify-content: center; /* Para centralizar horizontalmente */
   align-items: center; /* Para centralizar verticalmente */
 
 }
-.dentro h2 {
+.dentro {
   display: grid;
-  margin: 0;
-  margin-bottom: 10px; 
-  justify-content: center; /* Para centralizar horizontalmente */
   align-items: center; /* Para centralizar verticalmente */
+  margin-left: 30px;
 }
 .text {
   display: grid;
   width: 48%; /* Ajuste conforme necessário */
   justify-content: center; /* Para centralizar horizontalmente */
   align-items: center; /* Para centralizar verticalmente */
-
 }
 
+#descricao {
+  font-size: 16px;
+  line-height: 1.5;
+  width: 100%;
+}
 
 .carousel {
+  display: flex;
   width: 48%; /* Ajuste conforme necessário */
-}
-#descricao {
-    font-size: 16px;
-    line-height: 1.5;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 #carrossel {
-    width: 100%;
-    height: auto;
+  width: 380px;
+  height: 216px;
 }
+
 .dentro{
- display: grid;
- justify-content: center; /* Para centralizar horizontalmente */
- align-items: center; /* Para centralizar verticalmente */
+  display: grid;
+  justify-content: center; /* Para centralizar horizontalmente */
+  align-items: center; /* Para centralizar verticalmente */
 }
 
 footer {
