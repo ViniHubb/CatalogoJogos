@@ -1,0 +1,100 @@
+header {
+  display: flex;
+  background-color: #141414;
+  padding: 20px 30px;
+  border-bottom: 1px solid #999999;
+  justify-content: space-between;
+}
+
+div {
+  display: flex;
+}
+
+#icone {
+  width: 40px;
+  height: 40px;
+}
+
+#titulo {
+  margin: 0 10px;
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  align-self: center;
+}
+
+#button {
+  text-decoration: none;
+  background-color: #00F58E;
+  color: #141414;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.hero {
+  padding: 20px;
+  height:80vh;
+  background-color: #141414;
+  color: #ffffff;
+  font-family: sans-serif;
+}
+.conteinerHero {
+  display: flex;
+  justify-content: space-between;
+  height: 80%;
+}
+.tituloHero{
+  justify-content: center; /* Para centralizar horizontalmente */
+  align-items: center; /* Para centralizar verticalmente */
+
+}
+.text {
+  display: grid;
+  width: 48%; /* Ajuste conforme necessário */
+  justify-content: center; /* Para centralizar horizontalmente */
+  align-items: center; /* Para centralizar verticalmente */
+}
+.dentro {
+  display: grid;
+  align-items: center; /* Para centralizar verticalmente */
+  margin-left: 30px;
+}
+
+#estrela {
+  width: 20px;
+  height: 20px;
+}
+
+#descricao {
+  font-size: 16px;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.jogo {
+  display: flex;
+  width: 48%; /* Ajuste conforme necessário */
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#game {
+  width: 220px;
+  height: 440px;
+}
+
+.dentro{
+  display: grid;
+  justify-content: center; /* Para centralizar horizontalmente */
+  align-items: center; /* Para centralizar verticalmente */
+}
+
+footer {
+  background-color: #00F58E;
+  padding: 10px;
+  text-align: center;
+  font-family: sans-serif;
+} 
