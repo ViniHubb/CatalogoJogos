@@ -5,109 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo</title>
 
-  <title>Catalogo</title>
-  <style>
-    header {
-         display: flex;
-        background-color: #141414;
-        padding: 20px 30px;
-        border-bottom: 1px solid #999999;
-        justify-content: space-between;
-    }
-    #titulo {
-        margin: 0 10px;
-        color: #fff;
-        font-family: sans-serif;
-        font-weight: bold;
-        font-size: 20px;
-        align-self: center;
-    }
+  <link rel="stylesheet" href="static/catalogo.css">
 
-    #button {
-        text-decoration: none;
-        background-color: #00F58E;
-        color: #141414;
-        font-family: sans-serif;
-        font-weight: bold;
-        padding: 10px;
-        }
-    body {
-        background-color: #00F58E;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
-
-    h1 {
-        margin-top: 50px;
-    }
-
-    form {
-        margin-top: 20px;
-    }
-
-    label {
-        font-size: 18px;
-        margin-right: 10px;
-    }
-
-    input {
-        padding: 10px;
-        font-size: 16px;
-    }
-
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: white;
-        color: #00F58E;
-        border: none;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #444;
-        color: white;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-    .resultados {
-            margin-top: 20px;
-    }
-
-    .jogo {
-            border: 2px solid #fff;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            text-align: left;
-        }
-
-    .jogo h3 {
-            color: #000000;
-            margin-bottom: 10px;
-        }
-    
-</style>
 </head>
 <body>
     <header>
         <div>
-          <img id="icone" src="img/icon2.png" alt="icone">
-          <h1 id="titulo">Game Spotter</h1>
+            <img id="icone" src="/static/icon2.png" alt="icone">
+            <h1 id="titulo">Game Spotter</h1>
         </div>
-        <a id="button" href="login.html">Login/Register</a>
-    
+        {% if current_user.is_authenticated %}
+            <p>Bem-vindo, {{ current_user.id }}!</p>
+            <a id="button" href="/logout">Logout</a>
+        {% else %}
+            <a id="button" href="/login">Login/Register</a>
+        {% endif %}
     </header>
     
     <h1>Catalogo de Jogos</h1>

@@ -93,3 +93,19 @@ footer {
   text-align: center;
   font-family: sans-serif;
 }
+.catalogo-btn {
+  text-align: center;
+  text-decoration: none;
+  background-color: #00F58E;
+  color: #141414;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 20px; /* Adicione margem superior conforme necessário */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.catalogo-btn:hover {
+  background-color: #007A7A;
+}

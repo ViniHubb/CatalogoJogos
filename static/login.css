@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url('assets/img/icon2.png') no-repeat center center fixed;
+    background: url('./icon1.png') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     align-items: center;

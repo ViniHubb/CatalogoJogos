@@ -1,17 +1,39 @@
-from flask import Flask , make_response, jsonify, request, render_template
-
+from flask import Flask, render_template, request, redirect, url_for
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import mysql.connector
 
 conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='1234',
+    password='143786',
     database='catalogo',
 )
 
 app = Flask('Catalogo')
 app.config ['JSON_SORT_KEYS']=False
+app.config['SECRET_KEY'] = 'sua_chave_secreta_aqui'
+
+login_manager = LoginManager(app)
+login_manager.login_view = 'LoginPage'
+
+class Usuario(UserMixin):
+    pass
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    cursor = conexao.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM usuario WHERE email = %s", (user_id,))
+    usuario_data = cursor.fetchone()
+    if usuario_data:
+        usuario = Usuario()
+        usuario.id = usuario_data['email']
+        return usuario
+    return None
+
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 def HomePage ():
@@ -41,7 +63,20 @@ def Catalogo():
 
 @app.route('/login', methods=['GET', 'POST'])
 def LoginPage():
-    
+    if request.method == 'POST':
+        email = request.form['email']
+        senha = request.form['senha']
+
+        cursor = conexao.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM usuario WHERE email = %s AND senha = %s", (email, senha))
+        usuario_data = cursor.fetchone()
+
+        if usuario_data:
+            usuario = Usuario()
+            usuario.id = email
+            login_user(usuario)
+            return redirect (url_for('Catalogo'))
+
     return render_template('login.html')
 
 @app.route('/registro', methods=['GET', 'POST'])
@@ -73,6 +108,11 @@ def RegistroPage():
 
     return render_template('registro.html', mensagem_erro=None, mensagem_sucesso=None)
 
+@app.route('/logout')
+@login_required
+def LogoutPage():
+    logout_user()
+    return redirect(url_for('LoginPage'))
 
 if __name__ == "__main__":
     app.run(debug=True)
