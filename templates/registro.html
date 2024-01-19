@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resgistre</title>
+
+ <style>
+ body {
+    margin: 0;
+    padding: 0;
+    background: url('assets/img/icon2.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px; /* Largura da caixa de login */
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-box button:hover {
+    background-color: #45a049;
+}
+
+.register-btn {
+    background-color: #008CBA;
+    margin-top: 10px;
+}
+
+.register-btn:hover {
+    background-color: #007AAB;
+}
+.mensagem-erro {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+</style>
+   
+</head>
+<div class="login-box">
+    <h2>Registro</h2>
+    <form method="post" action="/registro">
+        <input type="text" placeholder="Nome Completo" name="nome" required>
+        <br>
+        <input type="text" placeholder="Email" name="email" required>
+        <br>
+        <input type="password" placeholder="Senha" name="senha" required>
+        <br>
+        <input type="password" placeholder="Confirmar Senha" name="confirmarSenha" required>
+        <br>
+        <button type="submit">Confirmar</button>
+    </form>
+</div>
+<div class="mensagem-erro">
+    {% if mensagem_erro %}
+        <p>{{ mensagem_erro }}</p>
+    {% endif %}
+</div>
+
+<div class="mensagem-sucesso">
+    {% if mensagem_sucesso %}
+        <p>{{ mensagem_sucesso }}</p>
+    {% endif %}
+</div>
+</body>
+</html>

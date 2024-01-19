@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogo</title>
+
+  <title>Catalogo</title>
+  <style>
+    header {
+         display: flex;
+        background-color: #141414;
+        padding: 20px 30px;
+        border-bottom: 1px solid #999999;
+        justify-content: space-between;
+    }
+    #titulo {
+        margin: 0 10px;
+        color: #fff;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        align-self: center;
+    }
+
+    #button {
+        text-decoration: none;
+        background-color: #00F58E;
+        color: #141414;
+        font-family: sans-serif;
+        font-weight: bold;
+        padding: 10px;
+        }
+    body {
+        background-color: #00F58E;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        margin-top: 50px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: white;
+        color: #00F58E;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #444;
+        color: white;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .resultados {
+            margin-top: 20px;
+    }
+
+    .jogo {
+            border: 2px solid #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+    .jogo h3 {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+    
+</style>
+</head>
+<body>
+    <header>
+        <div>
+          <img id="icone" src="img/icon2.png" alt="icone">
+          <h1 id="titulo">Game Spotter</h1>
+        </div>
+        <a id="button" href="login.html">Login/Register</a>
+    
+    </header>
+    
+    <h1>Catalogo de Jogos</h1>
+
+    <form method="post" action="/catalogo">
+        <label for="termo_pesquisa">Pesquisar jogo por nome:</label>
+        <input type="text" name="termo_pesquisa" id="termo_pesquisa" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    {% if jogos %}
+        <div class="resultados">
+            <h2>Resultados da pesquisa para '{{ termo_pesquisa }}':</h2>
+            {% for jogo in jogos %}
+                <div class="jogo">
+                    <h3>{{ jogo[1] }}</h3>  <!-- jogo[1] representa o nome do jogo -->
+                    <p><strong>Classificação:</strong> {{ jogo[2] }}</p>
+                    <p><strong>Ano de Lançamento:</strong> {{ jogo[3] }}</p>
+                    <p><strong>Gênero:</strong> {{ jogo[4] }}</p>
+                    <p><strong>Modo de Jogo:</strong> {{ jogo[5] }}</p>
+                    <p><strong>Plataforma:</strong> {{ jogo[6] }}</p>
+                    <p><strong>Publicadora:</strong> {{ jogo[7] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        {% elif mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+</body>
+</html>
