@@ -1,12 +1,12 @@
-from flask import Flask , make_response, jsonify ,request,render_template
+from flask import Flask , make_response, jsonify, request, render_template
+
 import mysql.connector
 
-
-conexao= mysql.connector.connect(
+conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='143786',
+    password='1234',
     database='catalogo',
 )
 
@@ -38,6 +38,11 @@ def Catalogo():
 
     # Se o método for GET, exibir a página principal sem resultados de pesquisa
     return render_template('catalogo.html', jogos=None, termo_pesquisa=None)
+
+@app.route('/login', methods=['GET', 'POST'])
+def LoginPage():
+    
+    return render_template('login.html')
 
 @app.route('/registro', methods=['GET', 'POST'])
 def RegistroPage():
