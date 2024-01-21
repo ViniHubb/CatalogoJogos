@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url('./icon1.png') no-repeat center center fixed;
+    background-color: #282828;
     background-size: cover;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 300px; /* Largura da caixa de login */
+    width: 300px; /* Definindo uma largura maior para a caixa de login */
 }
 
 .login-box h2 {
@@ -52,9 +52,4 @@ body {
 
 .register-btn:hover {
     background-color: #007AAB;
-}
-.mensagem-erro {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
 }

@@ -5,18 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zelda Link's Awakenin</title>
 
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/paginaJogo.css">
+  <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="static/css/paginaJogo.css">
 </head>
 <body>
 
   <header>
-    <div>
-      <img id="icone" src="assets/img/icon2.png" alt="icone">
-      <h1 id="titulo">Game Spotter</h1>
-    </div>
-    <a id="button" href="login.html">Login/Register</a>
-
+    <a href="/">
+      <div class="topo">
+        <img id="icone" src="static/img/icon2.png" alt="icone">
+          <h1 id="logo">Game Spotter</h1>
+      </div>
+    </a>
+    {% if current_user.is_authenticated %}
+      <p>Bem-vindo, {{ current_user.id }}!</p>
+      <a class="button" href="/logout">Logout</a>
+    {% else %}
+      <a class="button" href="/login">Login/Register</a>
+    {% endif %}
   </header>
 
   <main class="hero">
@@ -27,7 +33,7 @@
             <h2>Zelda Link's Awakenin</h2>
             <span>
               9.8 
-              <img id="estrela" src="assets/img/iconeEstrela.png" alt="Estrela">
+              <img id="estrela" src="static/img/iconeEstrela.png" alt="Estrela">
               Ano: 2023
             </span>
             <p id="descricao">
@@ -42,7 +48,7 @@
           </div>
         </div>
         <div class="jogo">
-            <img id="game" src="assets/img/zelda.jpg" alt="Zelda">
+            <img id="game" src="static/img/zelda.jpg" alt="Zelda">
         </div>
     </div>
 </main>

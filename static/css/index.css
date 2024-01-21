@@ -6,7 +6,7 @@ header {
   justify-content: space-between;
 }
 
-div {
+.topo {
   display: flex;
 }
 
@@ -15,7 +15,7 @@ div {
   height: 40px;
 }
 
-#titulo {
+#logo {
   margin: 0 10px;
   color: #fff;
   font-family: sans-serif;
@@ -24,47 +24,57 @@ div {
   align-self: center;
 }
 
-#button {
+.button {
   text-decoration: none;
+  text-align: center;
   background-color: #00F58E;
   color: #141414;
   font-family: sans-serif;
   font-weight: bold;
   padding: 10px;
+  max-height: 20px;
+  transition: background-color 0.3s;
+}
+.button:hover {
+  background-color: #008a50;
 }
 
-.hero {
-  padding: 20px;
-  height:80vh;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 1 0;
+}
+
+.Hero {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  padding: 0 10px 20px 10px;
   background-color: #141414;
   color: #ffffff;
   font-family: sans-serif;
 }
-.conteinerHero {
-  display: flex;
-  justify-content: space-between;
-  height: 80%;
-}
+
 .tituloHero{
   justify-content: center; /* Para centralizar horizontalmente */
   align-items: center; /* Para centralizar verticalmente */
+}
 
-}
-.text {
-  display: grid;
-  width: 48%; /* Ajuste conforme necessário */
-  justify-content: center; /* Para centralizar horizontalmente */
-  align-items: center; /* Para centralizar verticalmente */
-}
 .dentro {
   display: grid;
   align-items: center; /* Para centralizar verticalmente */
   margin-left: 30px;
 }
 
-#estrela {
-  width: 20px;
-  height: 20px;
+.text {
+  display: grid;
+  width: 48%; /* Ajuste conforme necessário */
+  justify-content: center; /* Para centralizar horizontalmente */
+  align-items: center; /* Para centralizar verticalmente */
 }
 
 #descricao {
@@ -73,7 +83,23 @@ div {
   width: 100%;
 }
 
-.jogo {
+.catalogo-btn {
+  text-align: center;
+  text-decoration: none;
+  background-color: #00F58E;
+  color: #141414;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.catalogo-btn:hover {
+  background-color: #008a50;
+}
+
+.carousel {
   display: flex;
   width: 48%; /* Ajuste conforme necessário */
   height: 100%;
@@ -81,9 +107,9 @@ div {
   align-items: center;
 }
 
-#game {
-  width: 220px;
-  height: 440px;
+#carrossel {
+  width: 600px;
+  height: 380px;
 }
 
 .dentro{
@@ -94,7 +120,7 @@ div {
 
 footer {
   background-color: #00F58E;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   font-family: sans-serif;
-} 
+}

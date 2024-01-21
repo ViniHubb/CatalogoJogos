@@ -5,48 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo</title>
 
-  <link rel="stylesheet" href="static/catalogo.css">
+  <link rel="stylesheet" href="static/css/catalogo.css">
+  <link rel="stylesheet" href="static/css/reset.css">
 
 </head>
 <body>
     <header>
-        <div>
-            <img id="icone" src="/static/icon2.png" alt="icone">
-            <h1 id="titulo">Game Spotter</h1>
-        </div>
+        <a href="/">
+          <div class="topo">
+            <img id="icone" src="static/img/icon2.png" alt="icone">
+              <h1 id="logo">Game Spotter</h1>
+          </div>
+        </a>
         {% if current_user.is_authenticated %}
-            <p>Bem-vindo, {{ current_user.id }}!</p>
-            <a id="button" href="/logout">Logout</a>
+          <p>Bem-vindo, {{ current_user.id }}!</p>
+          <a class="button" href="/logout">Logout</a>
         {% else %}
-            <a id="button" href="/login">Login/Register</a>
+          <a class="button" href="/login">Login/Register</a>
         {% endif %}
     </header>
-    
-    <h1>Catalogo de Jogos</h1>
+    <main>
+        <h1 class="titulo">Catalogo de Jogos</h1>
 
-    <form method="post" action="/catalogo">
-        <label for="termo_pesquisa">Pesquisar jogo por nome:</label>
-        <input type="text" name="termo_pesquisa" id="termo_pesquisa" required>
-        <button type="submit">Pesquisar</button>
-    </form>
-
-    {% if jogos %}
-        <div class="resultados">
-            <h2>Resultados da pesquisa para '{{ termo_pesquisa }}':</h2>
-            {% for jogo in jogos %}
-                <div class="jogo">
-                    <h3>{{ jogo[1] }}</h3>  <!-- jogo[1] representa o nome do jogo -->
-                    <p><strong>Classificação:</strong> {{ jogo[2] }}</p>
-                    <p><strong>Ano de Lançamento:</strong> {{ jogo[3] }}</p>
-                    <p><strong>Gênero:</strong> {{ jogo[4] }}</p>
-                    <p><strong>Modo de Jogo:</strong> {{ jogo[5] }}</p>
-                    <p><strong>Plataforma:</strong> {{ jogo[6] }}</p>
-                    <p><strong>Publicadora:</strong> {{ jogo[7] }}</p>
+        <form class="pesquisa" method="post" action="/catalogo">
+            <label for="termo_pesquisa">Pesquisar jogo por nome:</label>
+            <input type="text" name="termo_pesquisa" id="termo_pesquisa" required>
+            <button type="submit">Pesquisar</button>
+        </form>
+        <div class="resultBox">
+            {% if jogos %}
+                <div class="resultados">
+                    <h2>Resultados da pesquisa para '{{ termo_pesquisa }}':</h2>
+                    {% for jogo in jogos %}
+                        <div class="jogo">
+                            <img src="static/img/jogos/{{ jogo[0] }}.jpg">
+                            <h3>{{ jogo[1] }}</h3>  <!-- jogo[1] representa o nome do jogo -->
+                        </div>  
+                    {% endfor %}
                 </div>
-            {% endfor %}
+                {% elif mensagem %}
+                <p>{{ mensagem }}</p>
+            {% endif %}
         </div>
-        {% elif mensagem %}
-        <p>{{ mensagem }}</p>
-    {% endif %}
+    </main>
+    <footer>                                            <!-- Rodapé -->
+        <span>© 2023 GameSpotter Todos os direitos reservados.</span>
+    </footer>
 </body>
 </html>

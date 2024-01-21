@@ -1,0 +1,136 @@
+header {
+   display: flex;
+   background-color: #141414;
+   padding: 20px 30px;
+   border-bottom: 1px solid #999999;
+   justify-content: space-between;
+}
+ 
+.topo {
+   display: flex;
+}
+ 
+#icone {
+   width: 40px;
+   height: 40px;
+}
+ 
+#logo {
+   margin: 0 10px;
+   color: #fff;
+   font-family: sans-serif;
+   font-weight: bold;
+   font-size: 20px;
+   align-self: center;
+}
+ 
+.button {
+   text-decoration: none;
+   text-align: center;
+   background-color: #00F58E;
+   color: #141414;
+   font-family: sans-serif;
+   font-weight: bold;
+   padding: 10px;
+   max-height: 20px;
+   transition: background-color 0.3s;
+}
+.button:hover {
+   background-color: #008a50;
+}
+
+body {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+main {
+   flex: 1 1 0;
+   text-align: center;
+   background-color: #282828;
+}
+
+.titulo {
+   margin-top: 50px;
+   font-family: sans-serif;
+   color: #fff;
+}
+
+.resultBox {
+   display: flex;
+   justify-content: center;
+}
+
+.pesquisa {
+   margin-top: 20px;
+   font-family: sans-serif;
+}
+
+.pesquisa label {
+   font-size: 18px;
+   margin-right: 10px;
+   color: #fff;
+}
+
+.pesquisa input {
+   padding: 10px;
+   font-size: 16px;
+   border-radius: 10px;
+   width: 50%;
+}
+
+.pesquisa button {
+   padding: 10px 20px;
+   font-size: 16px;
+   border-radius: 10px;
+   background-color: white;
+   color: #141414;
+   border: none;
+   cursor: pointer;
+}
+
+.pesquisa button:hover {
+   background-color: #444;
+   color: white;
+}
+
+.resultados {
+   display: flex;
+   flex-wrap: wrap;
+   width: 1200px;
+}
+
+.resultados h2 {
+   margin: 20px 20px;
+   width: 100%;
+   color: #fff;
+}
+
+.jogo {
+   max-width: 200px;
+   margin: 20px 20px 30px 20px;
+   border-radius: 10px;
+   text-align: left;
+}
+
+.jogo img {
+   width: 200px;
+   height: 250px;
+   border-radius: 10px;
+}
+
+.jogo h3 {
+   margin: 5px 0 0 5px ;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   color: #fff;
+}
+
+footer {
+   background-color: #00F58E;
+   padding: 20px;
+   text-align: center;
+   font-family: sans-serif;
+}

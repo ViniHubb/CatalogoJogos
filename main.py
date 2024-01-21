@@ -6,7 +6,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='143786',
+    password='1234',
     database='catalogo',
 )
 
@@ -33,13 +33,10 @@ def load_user(user_id):
     return None
 
 
-
-
 @app.route('/', methods=['GET', 'POST'])
 def HomePage ():
 
      return render_template('index.html')
-
 
 
 @app.route('/catalogo', methods=['GET', 'POST'])
@@ -61,6 +58,10 @@ def Catalogo():
     # Se o método for GET, exibir a página principal sem resultados de pesquisa
     return render_template('catalogo.html', jogos=None, termo_pesquisa=None)
 
+@app.route('/jogoTeste', methods=['GET', 'POST'])
+def PaginaJogo():
+     return render_template('paginaJogo.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def LoginPage():
     if request.method == 'POST':
@@ -78,6 +79,7 @@ def LoginPage():
             return redirect (url_for('Catalogo'))
 
     return render_template('login.html')
+
 
 @app.route('/registro', methods=['GET', 'POST'])
 def RegistroPage():
@@ -107,6 +109,7 @@ def RegistroPage():
         return render_template('registro.html', mensagem_sucesso=mensagem_sucesso)
 
     return render_template('registro.html', mensagem_erro=None, mensagem_sucesso=None)
+
 
 @app.route('/logout')
 @login_required

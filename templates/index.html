@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Spotter</title>
 
-  <link rel="stylesheet" href="static/reset.css">
-  <link rel="stylesheet" href="static/index.css">
-
+  <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="static/css/index.css">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
@@ -15,41 +14,45 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 </head>
-<body>
-
+<body class="superHero">
   <header>
-    <div>
-      <img id="icone" src="static/icon2.png" alt="icone">
-      <h1 id="titulo">Game Spotter</h1>
-    </div>
-    <a id="button" href="/login">Login/Register</a>
-
+    <a href="/">
+      <div class="topo">
+        <img id="icone" src="static/img/icon2.png" alt="icone">
+          <h1 id="logo">Game Spotter</h1>
+      </div>
+    </a>
+    {% if current_user.is_authenticated %}
+      <p>Bem-vindo, {{ current_user.id }}!</p>
+      <a class="button" href="/logout">Logout</a>
+    {% else %}
+      <a class="button" href="/login">Login/Register</a>
+    {% endif %}
   </header>
 
-  <main class="hero">
-  
-    <div class="conteinerHero">
-        <div class="text">
-          <div class="dentro">
-            <h2>Game Spotter</h2>
-            <p id="descricao">
-              Bem-vindo ao GameSpotter, o seu destino definitivo para descobrir os melhores jogos! 
-              Navegue por nosso catálogo abrangente e encontre as pérolas dos universos virtuais. 
-              Com GameSpotter, você está sempre na trilha dos jogos mais emocionantes. Spot os melhores jogos, 
-              sempre, e eleve sua experiência de gaming para novas alturas!
-            </p>
-            <a href="/catalogo" class="catalogo-btn">Catálogo</a>
-          </div>
+  <main>
+    <div class="Hero">
+      <div class="text">
+        <div class="dentro">
+          <h2>Game Spotter</h2>
+          <p id="descricao">
+            Bem-vindo ao GameSpotter, o seu destino definitivo para descobrir os melhores jogos! 
+            Navegue por nosso catálogo abrangente e encontre as pérolas dos universos virtuais. 
+            Com GameSpotter, você está sempre na trilha dos jogos mais emocionantes. Spot os melhores jogos, 
+            sempre, e eleve sua experiência de gaming para novas alturas!
+          </p>
+          <a href="/catalogo" class="catalogo-btn">Catálogo</a>
         </div>
-        <div class="carousel">
-            <img id="carrossel" src="static/carrossel.jpg" alt="carrossel">
-        </div>
+      </div>
+      <div class="carousel">
+          <img id="carrossel" src="static/img/carrossel.jpg" alt="carrossel">
+      </div>
     </div>
 </main>
 
-  <footer>                                            <!-- Rodapé -->
-    <span>© 2023 GameSpotter Todos os direitos reservados.</span>
-  </footer>
+<footer>                                            <!-- Rodapé -->
+  <span>© 2023 GameSpotter Todos os direitos reservados.</span>
+</footer>
 
 </body>
 </html>
