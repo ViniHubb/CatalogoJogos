@@ -4,6 +4,8 @@ header {
   padding: 20px 30px;
   border-bottom: 1px solid #999999;
   justify-content: space-between;
+  color: #fff;
+  font-family: sans-serif;
 }
 
 .topo {
