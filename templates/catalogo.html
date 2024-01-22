@@ -38,7 +38,8 @@
                     <h2>Resultados da pesquisa para '{{ termo_pesquisa }}':</h2>
                     {% for jogo in jogos %}
                         <div class="jogo">
-                            <img src="static/img/jogos/{{ jogo[0] }}.jpg">
+                            <a href="/jogo?id={{ jogo[0] }}">
+                            <img src="static/img/jogos/{{ jogo[0] }}.jpg"></a>
                             <h3>{{ jogo[1] }}</h3>  <!-- jogo[1] representa o nome do jogo -->
                         </div>  
                     {% endfor %}

@@ -26,15 +26,14 @@
   </header>
 
   <main class="hero">
-  
     <div class="conteinerHero">
         <div class="text">
           <div class="dentro">
-            <h2>Zelda Link's Awakenin</h2>
+            <h2>{{ jogo[1] }}</h2>
             <span>
-              9.8 
-              <img id="estrela" src="static/img/iconeEstrela.png" alt="Estrela">
-              Ano: 2023
+              <h3>9.8</h3> 
+              <img id="estrela" src="static/img/estrela.png" alt="Estrela">
+              <h3>Ano: {{ jogo[3] }}</h3>
             </span>
             <p id="descricao">
               Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -48,7 +47,7 @@
           </div>
         </div>
         <div class="jogo">
-            <img id="game" src="static/img/zelda.jpg" alt="Zelda">
+            <img id="game" src="static/img/jogos/{{ jogo[0] }}.jpg">
         </div>
     </div>
 </main>

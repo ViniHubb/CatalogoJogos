@@ -61,7 +61,7 @@ main {
 .conteinerHero {
   display: flex;
   justify-content: space-between;
-  height: 80%;
+  margin: 30px 0 0 0;
 }
 .tituloHero{
   justify-content: center; /* Para centralizar horizontalmente */
@@ -75,14 +75,18 @@ main {
   align-items: center; /* Para centralizar verticalmente */
 }
 .dentro {
-  display: grid;
+  display: flex;
   align-items: center; /* Para centralizar verticalmente */
   margin-left: 30px;
+}
+.dentro h3 {
+  margin: 0 0 5px 0;
 }
 
 #estrela {
   width: 20px;
   height: 20px;
+  padding: 0 0 0 0;
 }
 
 #descricao {
@@ -95,12 +99,13 @@ main {
   display: flex;
   width: 48%; /* Ajuste conforme necessário */
   height: 100%;
+  margin: 10px 0 0 0;
   justify-content: center;
   align-items: center;
 }
 
 #game {
-  width: 220px;
+  width: 320px;
   height: 440px;
 }
 
