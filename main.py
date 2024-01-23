@@ -6,7 +6,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='1234',
+    password='143786',
     database='catalogo',
 )
 
@@ -129,25 +129,16 @@ def RegistroPage():
 
     return render_template('registro.html', mensagem_erro=None, mensagem_sucesso=None)
 
+@app.route('/admin', methods=['GET', 'POST'])
+def Admin():
+     return render_template('admin.html')
+
 
 @app.route('/logout')
 @login_required
 def LogoutPage():
     logout_user()
     return redirect(url_for('LoginPage'))
-
-
-@app.route('/admin', methods=['GET', 'POST'])
-#@login_required
-def Admin():
-
-    return render_template('admin.html')
-
-@app.route('/admin/pesquisar', methods=['GET', 'POST'])
-#@login_required
-def AdminPesquisar():
-
-    return render_template('admin.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
