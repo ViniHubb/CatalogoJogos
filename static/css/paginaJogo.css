@@ -115,28 +115,16 @@ main {
   height: 440px;
 }
 
-.rating {
-  direction: rtl; /* Para que a ordem de seleção seja da direita para a esquerda */
-  unicode-bidi: bidi-override;
-  display: inline-flex;
+.comentario label {
+  font-family: sans-serif;
+}
+.comentario input {
+  background-color: #00F58E;
 }
 
-.rating > input {
-  display: none;
+#nota {
+  width: 40px;
 }
-
-.rating > label {
-  font-size: 30px;
-  color: #ddd;
-  cursor: pointer;
-}
-
-.rating > input:checked ~ label,
-.rating > input:hover ~ label {
-  color: #f5eb3b; /* Cor das estrelas selecionadas */
-}
-
-
 
 footer {
   background-color: #00F58E;
