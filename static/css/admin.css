@@ -1,0 +1,16 @@
+body {
+
+    color: #28a745; /* Cor do texto */
+  }
+
+  .bg-dark {
+    background-color: #343a40 !important; /* Cor de fundo da barra lateral */
+  }
+
+  .nav-link {
+    color: #ffffff !important; /* Cor do texto dos links na barra lateral */
+  }
+
+  .nav-link.active {
+    background-color: #ffffff; /* Cor de fundo do link ativo na barra lateral */
+  }

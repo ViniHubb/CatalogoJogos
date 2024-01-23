@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Admin</title>
+
+  <link rel="stylesheet" href="static/css/catalogo.css">
+  <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+
+<body>
+  <style>
+    body {
+
+      color: #28a745; /* Cor do texto */
+    }
+
+    .bg-dark {
+      background-color: #343a40 !important; /* Cor de fundo da barra lateral */
+    }
+
+    .nav-link {
+      color: #ffffff !important; /* Cor do texto dos links na barra lateral */
+    }
+
+    .nav-link.active {
+      background-color: #ffffff; /* Cor de fundo do link ativo na barra lateral */
+    }
+  </style>
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+      <div class="bg-dark col-auto col-md-2 min-vh-100">
+        <div class="bg-dark p-2">
+          <a class="d-flex text-decoration-none align-items-center">
+            <span class="fs-4 d-none d-sm-inline"> AdminMenu </span>
+          </a>
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" aria-current="page" data-bs-toggle="collapse" data-bs-target="#submenu-jogos">Jogos</a>
+              <ul id="submenu-jogos" class="nav nav-pills flex-column collapse pl-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pesquisar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Cadastrar</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-usuario">Usuário</a>
+              <ul id="submenu-usuario" class="nav nav-pills flex-column collapse pl-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pesquisar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Cadastrar</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
