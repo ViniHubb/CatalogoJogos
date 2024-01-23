@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zelda Link's Awakenin</title>
+  <title>{{ jogo[1] }}</title>
 
   <link rel="stylesheet" href="static/css/reset.css">
   <link rel="stylesheet" href="static/css/paginaJogo.css">
@@ -30,7 +30,7 @@
         <div class="text">
           <h2>{{ jogo[1] }}</h2>
           <div class="dentro">
-            <h3>9.8</h3> 
+            <h3>{{ jogo[8] }}</h3> 
             <img id="estrela" src="static/img/estrela.png" alt="Estrela">
             <h3>Ano: {{ jogo[3] }}</h3>
           </div>
@@ -43,25 +43,35 @@
             Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
             publishing software like Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <div class="comentario">
-            <form action="/avaliar" method="post">
-              <label for="nota">Avalie o jogo:</label>
-              <select name="nota" id="nota">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-              </select>
-              <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
-              <input type="submit" value="Avaliar">
-          </form>
-            
+          <div class="infosCima">
+            <h3>{{ jogo[4] }}</h3> 
+            <h3>{{ jogo[2] }}</h3>
+          </div>
+          <div class="infosBaixo">
+            <h3>Modo: {{ jogo[5] }}</h3>
+            <h3>Publicadoras: {{ jogo[7] }}</h3>
+          </div>
+          <div class="plataforma">
+            <h3>Plataformas: {{ jogo[6] }}</h3> 
+          </div>
+           
+          <div class="classifica">
+            <div class="nota">
+              <form action="/avaliar" method="post">
+                <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
+                <input type="submit" value="Avaliar">
+                <select name="nota" id="nota">
+                    <option value="1">*</option>
+                    <option value="2">* *</option>
+                    <option value="3">* * *</option>
+                    <option value="4">* * * *</option>
+                    <option value="5" selected="selected">* * * * *</option>
+                </select>
+              </form>
+            </div>
+            <div class="comentario">
+              
+            </div>
           </div>
         </div>
         <div class="jogo">
