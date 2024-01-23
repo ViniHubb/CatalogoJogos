@@ -4,6 +4,8 @@ header {
   padding: 20px 30px;
   border-bottom: 1px solid #999999;
   justify-content: space-between;
+  color: #fff;
+  font-family: sans-serif;
 }
 
 .topo {
@@ -33,6 +35,7 @@ header {
   font-weight: bold;
   padding: 10px;
   max-height: 20px;
+  border-radius: 8px;
   transition: background-color 0.3s;
 }
 .button:hover {
@@ -92,6 +95,7 @@ main {
   font-weight: bold;
   padding: 10px;
   margin-top: 20px;
+  border-radius: 8px;
   transition: background-color 0.3s;
 }
 
@@ -110,6 +114,7 @@ main {
 #carrossel {
   width: 600px;
   height: 380px;
+  border-radius: 10px;
 }
 
 .dentro{

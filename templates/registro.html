@@ -24,17 +24,19 @@
             <br>
             <button type="submit">Confirmar</button>
         </form>
+        <div class="mensagem-erro">
+            {% if mensagem_erro %}
+                <p>{{ mensagem_erro }}</p>
+            {% endif %}
+        </div>
+        <div class="mensagem-sucesso">
+            {% if mensagem_sucesso %}
+                <p><a href="/login">{{ mensagem_sucesso }}</a></p>
+            {% endif %}
+        </div>
     </div>
-    <div class="mensagem-erro">
-        {% if mensagem_erro %}
-            <p>{{ mensagem_erro }}</p>
-        {% endif %}
-    </div>
+    
 
-    <div class="mensagem-sucesso">
-        {% if mensagem_sucesso %}
-            <p>{{ mensagem_sucesso }}</p>
-        {% endif %}
-    </div>
+    
 </body>
 </html>

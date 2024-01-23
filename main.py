@@ -58,9 +58,28 @@ def Catalogo():
     # Se o método for GET, exibir a página principal sem resultados de pesquisa
     return render_template('catalogo.html', jogos=None, termo_pesquisa=None)
 
-@app.route('/jogoTeste', methods=['GET', 'POST'])
+@app.route('/jogo', methods=['GET', 'POST'])
 def PaginaJogo():
-     return render_template('paginaJogo.html')
+    jogo_id = request.args.get('id', default=None, type=int)
+    if jogo_id is not None:
+        # Aqui, você pode buscar os detalhes do jogo usando o jogo_id
+        cursor = conexao.cursor()
+        query = "SELECT * FROM jogos WHERE id = %s"
+        cursor.execute(query, (jogo_id,))
+        jogo_info = cursor.fetchone()
+
+    if jogo_info:
+        return render_template('paginaJogo.html', jogo=jogo_info)
+    else:
+        return "Jogo não encontrado", 404
+
+@app.route('/avaliar', methods=['POST'])
+def Avaliar():
+    nota = request.form.get('nota')
+    jogo_id = request.form.get('jogo_id')
+
+    return redirect(url_for('PaginaJogo', id=jogo_id))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def LoginPage():
@@ -120,6 +139,19 @@ def Admin():
 def LogoutPage():
     logout_user()
     return redirect(url_for('LoginPage'))
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+#@login_required
+def Admin():
+
+    return render_template('admin.html')
+
+@app.route('/admin/pesquisar', methods=['GET', 'POST'])
+#@login_required
+def AdminPesquisar():
+
+    return render_template('admin.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

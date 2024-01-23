@@ -26,29 +26,46 @@
   </header>
 
   <main class="hero">
-  
     <div class="conteinerHero">
         <div class="text">
+          <h2>{{ jogo[1] }}</h2>
           <div class="dentro">
-            <h2>Zelda Link's Awakenin</h2>
-            <span>
-              9.8 
-              <img id="estrela" src="static/img/iconeEstrela.png" alt="Estrela">
-              Ano: 2023
-            </span>
-            <p id="descricao">
-              Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. 
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
-              unknown printer took a galley of type and scrambled it to make a type specimen book. 
-              It has survived not only five centuries, but also the leap into electronic typesetting, 
-              remaining essentially unchanged. It was popularised in the 1960s with the release of 
-              Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
-              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
+            <h3>9.8</h3> 
+            <img id="estrela" src="static/img/estrela.png" alt="Estrela">
+            <h3>Ano: {{ jogo[3] }}</h3>
+          </div>
+          <p id="descricao">
+            Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
+            unknown printer took a galley of type and scrambled it to make a type specimen book. 
+            It has survived not only five centuries, but also the leap into electronic typesetting, 
+            remaining essentially unchanged. It was popularised in the 1960s with the release of 
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
+            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+          <div class="comentario">
+            <form action="/avaliar" method="post">
+              <label for="nota">Avalie o jogo:</label>
+              <select name="nota" id="nota">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+              </select>
+              <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
+              <input type="submit" value="Avaliar">
+          </form>
+            
           </div>
         </div>
         <div class="jogo">
-            <img id="game" src="static/img/zelda.jpg" alt="Zelda">
+            <img id="game" src="static/img/jogos/{{ jogo[0] }}.jpg">
         </div>
     </div>
 </main>
