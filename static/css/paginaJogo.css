@@ -35,6 +35,7 @@ header {
   font-weight: bold;
   padding: 10px;
   max-height: 20px;
+  border-radius: 8px;
   transition: background-color 0.3s;
 }
 .button:hover {
@@ -73,20 +74,25 @@ main {
   width: 48%; /* Ajuste conforme necessário */
   justify-content: center; /* Para centralizar horizontalmente */
   align-items: center; /* Para centralizar verticalmente */
+  margin: 0 0 0 30px;
 }
 .dentro {
   display: flex;
   align-items: center; /* Para centralizar verticalmente */
-  margin-left: 30px;
+  justify-content: flex-start;
 }
 .dentro h3 {
   margin: 0 0 5px 0;
 }
 
+.dentro h2 {
+  width: 100%;
+}
+
 #estrela {
-  width: 20px;
-  height: 20px;
-  padding: 0 0 0 0;
+  width: 18px;
+  height: 18px;
+  padding: 0 10px 10px 5px;
 }
 
 #descricao {
@@ -109,11 +115,28 @@ main {
   height: 440px;
 }
 
-.dentro{
-  display: grid;
-  justify-content: center; /* Para centralizar horizontalmente */
-  align-items: center; /* Para centralizar verticalmente */
+.rating {
+  direction: rtl; /* Para que a ordem de seleção seja da direita para a esquerda */
+  unicode-bidi: bidi-override;
+  display: inline-flex;
 }
+
+.rating > input {
+  display: none;
+}
+
+.rating > label {
+  font-size: 30px;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating > input:hover ~ label {
+  color: #f5eb3b; /* Cor das estrelas selecionadas */
+}
+
+
 
 footer {
   background-color: #00F58E;

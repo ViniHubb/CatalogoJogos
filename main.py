@@ -73,6 +73,14 @@ def PaginaJogo():
     else:
         return "Jogo não encontrado", 404
 
+@app.route('/avaliar', methods=['POST'])
+def Avaliar():
+    nota = request.form.get('nota')
+    jogo_id = request.form.get('jogo_id')
+
+    return redirect(url_for('PaginaJogo', id=jogo_id))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def LoginPage():
     if request.method == 'POST':
