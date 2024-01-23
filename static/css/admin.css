@@ -14,3 +14,6 @@ body {
   .nav-link.active {
     background-color: #ffffff; /* Cor de fundo do link ativo na barra lateral */
   }
+  .nav-pills li a:hover{
+    background-color: #28a745;
+  }

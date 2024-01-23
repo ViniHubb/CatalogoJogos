@@ -140,18 +140,5 @@ def LogoutPage():
     logout_user()
     return redirect(url_for('LoginPage'))
 
-
-@app.route('/admin', methods=['GET', 'POST'])
-#@login_required
-def Admin():
-
-    return render_template('admin.html')
-
-@app.route('/admin/pesquisar', methods=['GET', 'POST'])
-#@login_required
-def AdminPesquisar():
-
-    return render_template('admin.html')
-
 if __name__ == "__main__":
     app.run(debug=True)
