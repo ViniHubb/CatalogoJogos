@@ -34,7 +34,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   margin: 10px 0;
   background-color: #28a745;
   color: #ffffff;
@@ -42,6 +42,7 @@ body {
 }
 .cadaResultado h1 {
   font-size: 20px;
+  margin: 0;
 }
 
 .editarExcluir {
