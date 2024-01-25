@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import mysql.connector
+from flask import jsonify
+
 
 conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='1234',
+    password='143786',
     database='catalogo',
 )
 
@@ -167,28 +169,6 @@ def RegistroPage():
     return render_template('registro.html', mensagem_erro=None, mensagem_sucesso=None)
 
 
-# @app.route('/admin', methods=['GET','POST'])
-# def Admin():
-#     if request.method == 'POST':
-#         # Se o método for POST, significa que o formulário foi enviado
-#         cursor = conexao.cursor()
-
-#         # Obter o termo de pesquisa do formulário
-#         termo_pesquisa = request.form['termo_pesquisa']
-
-#         # Consultar o banco de dados para jogos que contenham o termo de pesquisa no nome
-#         query = "SELECT * FROM jogos WHERE nome_do_jogo LIKE %s "
-#         cursor.execute(query, ('%' + termo_pesquisa + '%',))
-#         resultados = cursor.fetchall()
-
-#         return render_template('admin.html', jogos=resultados, termo_pesquisa=termo_pesquisa)
-
-#     # Se o método for GET, exibir a página principal sem resultados de pesquisa
-#     return render_template('admin.html', jogos=None, termo_pesquisa=None)
-    
-    
-  
-
 @app.route('/admin', methods=['GET', 'POST'])
 def Admin():
     cursor = conexao.cursor()
@@ -231,7 +211,47 @@ def Admin():
     # Se a requisição for GET, exibe a página principal sem resultados de pesquisa
     return render_template('admin.html', jogos=None, termo_pesquisa=None)
 
+# @app.route('/admin', methods=['GET', 'POST'])
+# def Admin():
+#     cursor = conexao.cursor()
 
+#     if request.method == 'POST':
+#         # Se o formulário de pesquisa for enviado, realiza a pesquisa e exibe os resultados
+#         if 'termo_pesquisa' in request.form:
+#             termo_pesquisa = request.form['termo_pesquisa']
+#             query = "SELECT * FROM jogos WHERE nome LIKE %s"
+#             cursor.execute(query, ('%' + termo_pesquisa + '%',))
+#             resultados = cursor.fetchall()
+#             return render_template('admin.html', jogos=resultados, termo_pesquisa=termo_pesquisa)
+
+#         # Se o formulário de cadastro/edição for enviado, processa os dados e realiza a operação
+#         elif 'nome' in request.form:
+#             nome = request.form['nome']
+#             classificacao = request.form['classificacao']
+#             ano_lancamento = request.form['ano_lancamento']
+#             genero = request.form['genero']
+#             modo_de_jogo = request.form['modo_de_jogo']
+#             plataforma = request.form['plataforma']
+#             publicadoras = request.form['publicadoras']
+#             descricao = request.form['descricao']
+
+#             # Se houver um ID, trata-se de uma edição
+#         elif 'formEdicao' in request.form:
+#                 jogo_id = request.form['formEdicao']
+#                 query = "UPDATE jogos SET nome=%s, classificacao=%s, ano_lancamento=%s, genero=%s, modo_de_jogo=%s, plataforma=%s, publicadoras=%s, descricao=%s WHERE id=%s"
+#                 cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao, jogo_id))
+#                 mensagem_sucesso = "Jogo atualizado com sucesso!"
+#         else:
+#                 # Se não houver um ID, trata-se de um novo cadastro
+#                 query = "INSERT INTO jogos (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+#                 cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao))
+#                 mensagem_sucesso = "Jogo cadastrado com sucesso!"
+
+#                 conexao.commit()
+#         return render_template('admin.html', mensagem_sucesso=mensagem_sucesso)
+
+#     # Se a requisição for GET, exibe a página principal sem resultados de pesquisa
+#     return render_template('admin.html', jogos=None, termo_pesquisa=None)
 
 @app.route('/logout')
 @login_required
