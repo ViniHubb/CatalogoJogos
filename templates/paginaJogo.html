@@ -31,7 +31,7 @@
     <div class="conteinerHero">
       <div class="text">
         <div>
-          <h2>{{ jogo[1] }}</h2>
+          <h2>{{ jogo[1] }} {{ menssagem }}</h2>
           <div class="dentro">
             <h3>{{ nota }}</h3> 
             <img id="estrela" src="static/img/estrela.png" alt="Estrela">
@@ -78,7 +78,7 @@
     </div>
     {% if current_user.is_authenticated %}
       <div class="classifica">
-        <form action="/jogo" method="post">
+        <form action="/jogo?id={{ jogo[0] }}" method="post">
           <div class="nota">
             <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
             <input type="hidden" name="email" value="{{ current_user.id }}">

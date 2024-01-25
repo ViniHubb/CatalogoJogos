@@ -44,7 +44,7 @@ def HomePage ():
 @app.route('/catalogo', methods=['GET', 'POST'])
 def Catalogo():
     cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM jogos ORDER BY id ASC LIMIT 10")
+    cursor.execute("SELECT * FROM jogos ORDER BY id DESC LIMIT 10")
     resultados = cursor.fetchall()
 
     if request.method == 'POST':
@@ -70,7 +70,7 @@ def PaginaJogo():
     jogo_info = None
     analises_com_nomes = None
     media_notas = 0.0
-    mensagem = ''
+    menssagem = ''
 
     if jogo_id is not None:
         cursor = conexao.cursor()
@@ -98,18 +98,18 @@ def PaginaJogo():
         email = request.form['email']
 
         cursor = conexao.cursor()
-        query_user = "SELECT * FROM analises WHERE email_usuario = %s"
-        cursor.execute(query_user, (email,))
+        query_user = "SELECT * FROM analises WHERE email_usuario = %s AND id_jogo = %s"
+        cursor.execute(query_user, (email,jogo_id))
         if cursor.fetchone():
-            mensagem = "Você ja analisou esse jogo"
+            menssagem = "Você ja analisou esse jogo"
         else:
             cursor.execute("INSERT INTO analises (nota, comentario, id_jogo, email_usuario) VALUES (%s, %s, %s, %s)", (nota, comentario, jogo_id, email))
             conexao.commit()
-            mensagem = "Sucesso, obrigado pela análise!"
+            menssagem = "Sucesso, obrigado pela análise!"
 
     if jogo_info:
         return render_template('paginaJogo.html',
-            mensagem=mensagem,
+            menssagem=menssagem,
             jogo=jogo_info, 
             analises=analises_com_nomes, 
             nota=media_notas
@@ -119,9 +119,11 @@ def PaginaJogo():
 
 @app.route('/login', methods=['GET', 'POST'])
 def LoginPage():
+    menssagem = ""
     if request.method == 'POST':
         email = request.form['email']
         senha = request.form['senha']
+        menssagem = "Email ou senha incorretos"
 
         cursor = conexao.cursor(dictionary=True)
         cursor.execute("SELECT * FROM usuarios WHERE email = %s AND senha = %s", (email, senha))
@@ -132,7 +134,7 @@ def LoginPage():
             login_user(usuario)
             return redirect (url_for('Catalogo'))
 
-    return render_template('login.html')
+    return render_template('login.html', menssagem=menssagem)
 
 
 @app.route('/registro', methods=['GET', 'POST'])
