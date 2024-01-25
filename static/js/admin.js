@@ -81,8 +81,21 @@ function showForm(formId) {
 
 
 
-  // Restante do código...
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -148,4 +161,20 @@ function toggleSubMenu(submenuId) {
   localStorage.setItem('submenuId', isExpanded ? '' : submenuId);
 }
 
-// Restante do código JavaScript...
+
+function preencherFormularioEdicao(id, nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
+  // Atualizar os campos do formulário com os dados do jogo
+  document.getElementById('jogo_id_edicao').value = id;
+  document.getElementById('nome_edicao').value = nome;
+  document.getElementById('classificacao_edicao').value = classificacao;
+  document.getElementById('ano_lancamento_edicao').value = ano_lancamento;
+  document.getElementById('genero_edicao').value = genero;
+  document.getElementById('modo_de_jogo_edicao').value = modo_de_jogo;
+  document.getElementById('plataforma_edicao').value = plataforma;
+  document.getElementById('publicadoras_edicao').value = publicadoras;
+  document.getElementById('descricao_edicao').value = descricao;
+
+  // Exibir o formulário de edição
+  document.getElementById('formularioEdicao').style.display = 'block';
+}
+
