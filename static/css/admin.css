@@ -1,19 +1,42 @@
 body {
 
-    color: #28a745; /* Cor do texto */
-  }
+  color: #28a745; /* Cor do texto */
+}
 
-  .bg-dark {
-    background-color: #343a40 !important; /* Cor de fundo da barra lateral */
-  }
+.bg-dark {
+  background-color: #343a40 !important; /* Cor de fundo da barra lateral */
+}
 
-  .nav-link {
-    color: #ffffff !important; /* Cor do texto dos links na barra lateral */
-  }
+.nav-link {
+  color: #ffffff !important; /* Cor do texto dos links na barra lateral */
+}
 
-  .nav-link.active {
-    background-color: #ffffff; /* Cor de fundo do link ativo na barra lateral */
-  }
-  .nav-pills li a:hover{
-    background-color: #28a745;
-  }
+.nav-link.active {
+  background-color: #ffffff; /* Cor de fundo do link ativo na barra lateral */
+}
+.nav-pills li a:hover{
+  background-color: #28a745;
+}
+
+#resultadosPesquisa {
+  display: flex;
+  flex-direction: column;
+}
+#resultadosPesquisa h3 {
+  margin: 10px;
+  font-size: 20px;
+}
+#resultadosPesquisa ul {
+  padding: 0 10px;
+}
+.cadaResultado {
+  width: 100%;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: #28a745;
+  color: #ffffff;
+  border-radius: 8px;
+}
+.cadaResultado h1 {
+  font-size: 20px;
+}
