@@ -30,6 +30,9 @@ body {
   padding: 0 10px;
 }
 .cadaResultado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 20px;
   margin: 10px 0;
@@ -39,4 +42,17 @@ body {
 }
 .cadaResultado h1 {
   font-size: 20px;
+}
+
+.editarExcluir {
+  display: flex;
+}
+.editarExcluir button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #343a40;
+  color: #ffffff;
+  font-weight: bold;
 }

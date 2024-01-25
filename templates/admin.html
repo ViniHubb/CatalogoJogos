@@ -98,12 +98,16 @@
               {% for jogo in jogos %}
                 <div class="cadaResultado">
                   <h1>{{ jogo[1] }}</h1>
+                  <div class="editarExcluir">
+                    <button>Editar</button>
+                    <button>Excluir</button>
+                  </div>
                 </div>
               {% endfor %}
             </ul>
           {% endif %}
         </div>
-        
+
       </div>
     </div>
   </div>
