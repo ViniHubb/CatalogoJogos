@@ -129,9 +129,56 @@ def RegistroPage():
 
     return render_template('registro.html', mensagem_erro=None, mensagem_sucesso=None)
 
-@app.route('/admin', methods=['GET', 'POST'])
+
+@app.route('/admin', methods=['GET','POST'])
 def Admin():
-     return render_template('admin.html')
+    if request.method == 'POST':
+        # Se o método for POST, significa que o formulário foi enviado
+        cursor = conexao.cursor()
+
+        # Obter o termo de pesquisa do formulário
+        termo_pesquisa = request.form['termo_pesquisa']
+
+        # Consultar o banco de dados para jogos que contenham o termo de pesquisa no nome
+        query = "SELECT * FROM jogos WHERE nome_do_jogo LIKE %s "
+        cursor.execute(query, ('%' + termo_pesquisa + '%',))
+        resultados = cursor.fetchall()
+
+        return render_template('admin.html', jogos=resultados, termo_pesquisa=termo_pesquisa)
+
+    # Se o método for GET, exibir a página principal sem resultados de pesquisa
+    return render_template('admin.html', jogos=None, termo_pesquisa=None)
+    
+    
+  
+
+@app.route('/admin/cadastrar', methods=['GET', 'POST'])
+def Cadstrar():
+    if request.method == 'POST':
+        # Obter os dados do formulário
+        nome = request.form['nome']
+        classificacao = request.form['classificacao']
+        ano_lancamento = request.form['ano_lancamento']
+        genero = request.form['genero']
+        modo_de_jogo = request.form['modo_de_jogo']
+        plataforma = request.form['plataforma']
+        publicadoras = request.form['publicadoras']
+
+        # Validar se todos os campos foram preenchidos
+        if not nome or not classificacao or not ano_lancamento or not genero or not modo_de_jogo or not plataforma or not publicadoras:
+            mensagem_erro = "Todos os campos devem ser preenchidos."
+            return render_template('admin.html', mensagem_erro=mensagem_erro)
+
+        # Inserir o novo jogo no banco de dados
+        cursor = conexao.cursor()
+        query = "INSERT INTO jogos (nome_do_jogo, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras))
+        conexao.commit()
+
+        mensagem_sucesso = "Jogo cadastrado com sucesso!"
+        return render_template('admin.html', mensagem_sucesso=mensagem_sucesso)
+
+    return render_template('admin.html')
 
 
 @app.route('/logout')
