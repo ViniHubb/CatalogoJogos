@@ -23,8 +23,10 @@
       </div>
     </a>
     {% if current_user.is_authenticated %}
-      <p>Bem-vindo, {{ current_user.id }}!</p>
-      <a class="button" href="/logout">Logout</a>
+      <div class="user">
+        <h2>Olá, {{ current_user.nome }}</h2>
+        <a class="button" href="/logout">Logout</a>
+      </div>
     {% else %}
       <a class="button" href="/login">Login/Register</a>
     {% endif %}

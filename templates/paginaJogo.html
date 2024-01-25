@@ -18,8 +18,10 @@
       </div>
     </a>
     {% if current_user.is_authenticated %}
-      <p>Bem-vindo, {{ current_user.id }}!</p>
-      <a class="button" href="/logout">Logout</a>
+      <div class="user">
+        <h2>Olá, {{ current_user.nome }}</h2>
+        <a class="button" href="/logout">Logout</a>
+      </div>
     {% else %}
       <a class="button" href="/login">Login/Register</a>
     {% endif %}
@@ -74,28 +76,32 @@
           <img id="game" src="static/img/jogos/{{ jogo[0] }}.jpg">
       </div>
     </div>
-    <div class="classifica">
-      <form action="/avaliar" method="post">
-        <div class="nota">
-          <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
-          <input type="submit" value="Avaliar">
-          <select name="nota" id="nota">
-              <option value="1">*</option>
-              <option value="2">* *</option>
-              <option value="3">* * *</option>
-              <option value="4">* * * *</option>
-              <option value="5" selected="selected">* * * * *</option>
-          </select>
-        </div>
-        <div class="comentario">
-          <textarea name="comentario" id="comentario" 
-            placeholder="Deixe aqui sua analise..." 
-            rows="4" 
-            cols="74"
-          ></textarea>
-        </div>
-      </form>
-    </div>
+    {% if current_user.is_authenticated %}
+      <div class="classifica">
+        <form action="/jogo" method="post">
+          <div class="nota">
+            <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
+            <input type="hidden" name="email" value="{{ current_user.id }}">
+            <input type="submit" value="Avaliar">
+            <select name="nota" id="nota">
+                <option value="1">*</option>
+                <option value="2">* *</option>
+                <option value="3">* * *</option>
+                <option value="4">* * * *</option>
+                <option value="5" selected="selected">* * * * *</option>
+            </select>
+          </div>
+          <div class="comentario">
+            <textarea name="comentario" id="comentario" 
+              placeholder="Deixe aqui sua analise..." 
+              rows="4" 
+              cols="74"
+              required
+            ></textarea>
+          </div>
+        </form>
+      </div>
+    {% endif %}
     <div class="boxAnalises">
       {% if analises %}
         <h2>Análises de usuários</h2>

@@ -6,7 +6,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='143786',
+    password='1234',
     database='catalogo',
 )
 
@@ -18,7 +18,10 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'LoginPage'
 
 class Usuario(UserMixin):
-    pass
+    def __init__(self, id, nome):
+        self.id = id
+        self.nome = nome
+
 
 
 @login_manager.user_loader
@@ -27,8 +30,7 @@ def load_user(user_id):
     cursor.execute("SELECT * FROM usuarios WHERE email = %s", (user_id,))
     usuario_data = cursor.fetchone()
     if usuario_data:
-        usuario = Usuario()
-        usuario.id = usuario_data['email']
+        usuario = Usuario(id=usuario_data['email'], nome=usuario_data['nome'])
         return usuario
     return None
 
@@ -41,6 +43,10 @@ def HomePage ():
 
 @app.route('/catalogo', methods=['GET', 'POST'])
 def Catalogo():
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM jogos")
+    resultados = cursor.fetchall()
+
     if request.method == 'POST':
         # Se o método for POST, significa que o formulário foi enviado
         cursor = conexao.cursor()
@@ -56,7 +62,7 @@ def Catalogo():
         return render_template('catalogo.html', jogos=resultados, termo_pesquisa=termo_pesquisa)
 
     # Se o método for GET, exibir a página principal sem resultados de pesquisa
-    return render_template('catalogo.html', jogos=None, termo_pesquisa=None)
+    return render_template('catalogo.html', jogos=resultados, termo_pesquisa=None)
 
 @app.route('/jogo', methods=['GET', 'POST'])
 def PaginaJogo():
@@ -64,6 +70,7 @@ def PaginaJogo():
     jogo_info = None
     analises_com_nomes = None
     media_notas = 0.0
+    mensagem = ''
 
     if jogo_id is not None:
         cursor = conexao.cursor()
@@ -85,22 +92,30 @@ def PaginaJogo():
             cursor.execute(query_media, (jogo_id,))
             media_notas = round(cursor.fetchone()[0], 1)
 
+    if request.method == "POST":
+        nota = request.form['nota']
+        comentario = request.form['comentario']
+        email = request.form['email']
+
+        cursor = conexao.cursor()
+        query_user = "SELECT * FROM analises WHERE email_usuario = %s"
+        cursor.execute(query_user, (email,))
+        if cursor.fetchone():
+            mensagem = "Você ja analisou esse jogo"
+        else:
+            cursor.execute("INSERT INTO analises (nota, comentario, id_jogo, email_usuario) VALUES (%s, %s, %s, %s)", (nota, comentario, jogo_id, email))
+            conexao.commit()
+            mensagem = "Sucesso, obrigado pela análise!"
+
     if jogo_info:
-        return render_template('paginaJogo.html', 
+        return render_template('paginaJogo.html',
+            mensagem=mensagem,
             jogo=jogo_info, 
             analises=analises_com_nomes, 
             nota=media_notas
-            )
+        )
     else:
         return "Jogo não encontrado", 404
-
-@app.route('/avaliar', methods=['POST'])
-def Avaliar():
-    nota = request.form.get('nota')
-    comentario = request.form.get('comentario')
-    jogo_id = request.form.get('jogo_id')
-    
-    return redirect(url_for('PaginaJogo', id=jogo_id))
 
 @app.route('/login', methods=['GET', 'POST'])
 def LoginPage():
@@ -113,8 +128,7 @@ def LoginPage():
         usuario_data = cursor.fetchone()
 
         if usuario_data:
-            usuario = Usuario()
-            usuario.id = email
+            usuario = Usuario(id=usuario_data['email'], nome=usuario_data['nome'])
             login_user(usuario)
             return redirect (url_for('Catalogo'))
 

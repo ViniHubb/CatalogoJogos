@@ -26,6 +26,18 @@ header {
   align-self: center;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+}
+.user h2{
+  font-size: 16px;
+  margin: 0 10px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 1px #fff;
+}
+
 .button {
   text-decoration: none;
   text-align: center;

@@ -18,12 +18,14 @@
           </div>
         </a>
         {% if current_user.is_authenticated %}
-          <p>Bem-vindo, {{ current_user.id }}!</p>
-          <a class="button" href="/logout">Logout</a>
+          <div class="user">
+            <h2>Olá, {{ current_user.nome }}</h2>
+            <a class="button" href="/logout">Logout</a>
+          </div>
         {% else %}
           <a class="button" href="/login">Login/Register</a>
         {% endif %}
-    </header>
+      </header>
     <main>
         <h1 class="titulo">Catalogo de Jogos</h1>
 
@@ -35,7 +37,9 @@
         <div class="resultBox">
             {% if jogos %}
                 <div class="resultados">
-                    <h2>Resultados da pesquisa para '{{ termo_pesquisa }}':</h2>
+                    {% if termo_pesquisa != None %}
+                      <h2>Resultados da pesquisa para '{{ termo_pesquisa }}':</h2>
+                    {% endif %}
                     {% for jogo in jogos %}
                         <div class="jogo">
                             <a href="/jogo?id={{ jogo[0] }}">
