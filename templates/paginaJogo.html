@@ -27,22 +27,36 @@
 
   <main class="hero">
     <div class="conteinerHero">
-        <div class="text">
+      <div class="text">
+        <div>
           <h2>{{ jogo[1] }}</h2>
           <div class="dentro">
-            <h3>{{ jogo[8] }}</h3> 
+            <h3>{{ nota }}</h3> 
             <img id="estrela" src="static/img/estrela.png" alt="Estrela">
             <h3>Ano: {{ jogo[3] }}</h3>
           </div>
           <p id="descricao">
-            Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
-            unknown printer took a galley of type and scrambled it to make a type specimen book. 
-            It has survived not only five centuries, but also the leap into electronic typesetting, 
-            remaining essentially unchanged. It was popularised in the 1960s with the release of 
-            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop 
-            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Valorant é um jogo de tiro em primeira pessoa tático desenvolvido 
+            e publicado pela Riot Games, conhecida por seu trabalho em League 
+            of Legends. Lançado em junho de 2020, o jogo rapidamente ganhou 
+            popularidade na comunidade de eSports devido à sua mistura única 
+            de jogabilidade estratégica e mecânicas precisas de tiro. O jogo 
+            é principalmente competitivo, com duas equipes de cinco jogadores 
+            cada. Cada jogador escolhe um "Agente", que possui habilidades 
+            únicas que podem ser usadas taticamente durante a partida. 
+            As habilidades variam desde a criação de barreiras até a habilidade 
+            de revelar a posição dos inimigos. As partidas são divididas em 
+            rodadas, e o objetivo principal é plantar uma "Spike" (uma espécie 
+            de bomba) em um local específico do mapa ou impedir a equipe 
+            adversária de fazê-lo. A jogabilidade enfatiza o trabalho em equipe, 
+            a estratégia e a habilidade de tiro, com um ritmo que pode variar de 
+            tenso e metódico a rápido e caótico, dependendo da situação.
+            Com uma comunidade ativa e torneios frequentes, Valorant se 
+            estabeleceu como um dos principais jogos de FPS táticos no cenário 
+            competitivo global.
           </p>
+        </div>
+        <div>
           <div class="infosCima">
             <h3>{{ jogo[4] }}</h3> 
             <h3>{{ jogo[2] }}</h3>
@@ -54,35 +68,53 @@
           <div class="plataforma">
             <h3>Plataformas: {{ jogo[6] }}</h3> 
           </div>
-           
-          <div class="classifica">
-            <div class="nota">
-              <form action="/avaliar" method="post">
-                <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
-                <input type="submit" value="Avaliar">
-                <select name="nota" id="nota">
-                    <option value="1">*</option>
-                    <option value="2">* *</option>
-                    <option value="3">* * *</option>
-                    <option value="4">* * * *</option>
-                    <option value="5" selected="selected">* * * * *</option>
-                </select>
-              </form>
-            </div>
-            <div class="comentario">
-              
-            </div>
-          </div>
         </div>
-        <div class="jogo">
-            <img id="game" src="static/img/jogos/{{ jogo[0] }}.jpg">
+      </div>
+      <div class="imagem">
+          <img id="game" src="static/img/jogos/{{ jogo[0] }}.jpg">
+      </div>
+    </div>
+    <div class="classifica">
+      <form action="/avaliar" method="post">
+        <div class="nota">
+          <input type="hidden" name="jogo_id" value="{{ jogo[0] }}">
+          <input type="submit" value="Avaliar">
+          <select name="nota" id="nota">
+              <option value="1">*</option>
+              <option value="2">* *</option>
+              <option value="3">* * *</option>
+              <option value="4">* * * *</option>
+              <option value="5" selected="selected">* * * * *</option>
+          </select>
         </div>
+        <div class="comentario">
+          <textarea name="comentario" id="comentario" 
+            placeholder="Deixe aqui sua analise..." 
+            rows="4" 
+            cols="74"
+          ></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="boxAnalises">
+      {% if analises %}
+        <h2>Análises de usuários</h2>
+        {% for analise in analises %}
+            <div class="analise">
+              <h3>{{ analise[2] }}
+              <h3>Nota: {{ analise[0] }}</h3>
+              <p>{{ analise[1] }}</p>
+            </div>  
+        {% endfor %}
+      {% else %}
+          <h2>Jogo ainda sem nenhuma análise. Você pode ser o primeiro!</h2>
+      {% endif %}
     </div>
 </main>
 
-  <footer>                                            <!-- Rodapé -->
-    <span>© 2023 GameSpotter Todos os direitos reservados.</span>
-  </footer>
+<footer>                                            <!-- Rodapé -->
+  <span>© 2023 GameSpotter Todos os direitos reservados.</span>
+</footer>
 
 </body>
 </html>

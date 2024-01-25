@@ -6,7 +6,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='143786',
+    password='1234',
     database='catalogo',
 )
 
@@ -24,7 +24,7 @@ class Usuario(UserMixin):
 @login_manager.user_loader
 def load_user(user_id):
     cursor = conexao.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM usuario WHERE email = %s", (user_id,))
+    cursor.execute("SELECT * FROM usuarios WHERE email = %s", (user_id,))
     usuario_data = cursor.fetchone()
     if usuario_data:
         usuario = Usuario()
@@ -49,7 +49,7 @@ def Catalogo():
         termo_pesquisa = request.form['termo_pesquisa']
 
         # Consultar o banco de dados para jogos que contenham o termo de pesquisa no nome
-        query = "SELECT * FROM jogos WHERE nome_do_jogo LIKE %s "
+        query = "SELECT * FROM jogos WHERE nome LIKE %s "
         cursor.execute(query, ('%' + termo_pesquisa + '%',))
         resultados = cursor.fetchall()
 
@@ -61,25 +61,46 @@ def Catalogo():
 @app.route('/jogo', methods=['GET', 'POST'])
 def PaginaJogo():
     jogo_id = request.args.get('id', default=None, type=int)
+    jogo_info = None
+    analises_com_nomes = None
+    media_notas = 0.0
+
     if jogo_id is not None:
-        # Aqui, você pode buscar os detalhes do jogo usando o jogo_id
         cursor = conexao.cursor()
-        query = "SELECT * FROM jogos WHERE id = %s"
-        cursor.execute(query, (jogo_id,))
+        query_jogo = "SELECT * FROM jogos WHERE id = %s"
+        cursor.execute(query_jogo, (jogo_id,))
         jogo_info = cursor.fetchone()
 
+        query_analises = """
+        SELECT analises.nota, analises.comentario, usuarios.nome
+        FROM analises 
+        JOIN usuarios ON analises.email_usuario = usuarios.email 
+        WHERE analises.id_jogo = %s;
+        """
+        cursor.execute(query_analises, (jogo_id,))
+        analises_com_nomes = cursor.fetchall()
+
+        if analises_com_nomes != []:
+            query_media = "SELECT AVG(nota) FROM analises WHERE id_jogo = %s"
+            cursor.execute(query_media, (jogo_id,))
+            media_notas = round(cursor.fetchone()[0], 1)
+
     if jogo_info:
-        return render_template('paginaJogo.html', jogo=jogo_info)
+        return render_template('paginaJogo.html', 
+            jogo=jogo_info, 
+            analises=analises_com_nomes, 
+            nota=media_notas
+            )
     else:
         return "Jogo não encontrado", 404
 
 @app.route('/avaliar', methods=['POST'])
 def Avaliar():
     nota = request.form.get('nota')
+    comentario = request.form.get('comentario')
     jogo_id = request.form.get('jogo_id')
-
+    
     return redirect(url_for('PaginaJogo', id=jogo_id))
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def LoginPage():
@@ -88,7 +109,7 @@ def LoginPage():
         senha = request.form['senha']
 
         cursor = conexao.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM usuario WHERE email = %s AND senha = %s", (email, senha))
+        cursor.execute("SELECT * FROM usuarios WHERE email = %s AND senha = %s", (email, senha))
         usuario_data = cursor.fetchone()
 
         if usuario_data:
@@ -115,13 +136,13 @@ def RegistroPage():
         cursor = conexao.cursor()
 
          # Verifica se o e-mail já está cadastrado
-        cursor.execute("SELECT * FROM usuario WHERE email = %s", (email,))
+        cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
         if cursor.fetchone():
             mensagem_erro = "Este e-mail já está cadastrado."
             return render_template('registro.html', mensagem_erro=mensagem_erro)
 
         # Insere o novo usuário no banco de dados
-        cursor.execute("INSERT INTO usuario (nome, email, senha) VALUES (%s, %s, %s)", (nome, email, senha))
+        cursor.execute("INSERT INTO usuarios (nome, email, senha) VALUES (%s, %s, %s)", (nome, email, senha))
         conexao.commit()
 
         mensagem_sucesso = "Registro bem-sucedido! Faça login para continuar."
