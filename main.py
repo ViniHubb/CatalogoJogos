@@ -8,7 +8,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='143786',
+    password='1234',
     database='catalogo',
 )
 
@@ -181,9 +181,8 @@ def Admin():
             cursor.execute(query, ('%' + termo_pesquisa + '%',))
             resultados = cursor.fetchall()
             return render_template('admin.html', jogos=resultados, termo_pesquisa=termo_pesquisa)
-
-        # Se o formulário de cadastro/edição for enviado, processa os dados e realiza a operação
-        elif 'nome' in request.form:
+        
+        if 'nome' in request.form:
             nome = request.form['nome']
             classificacao = request.form['classificacao']
             ano_lancamento = request.form['ano_lancamento']
@@ -192,7 +191,7 @@ def Admin():
             plataforma = request.form['plataforma']
             publicadoras = request.form['publicadoras']
             descricao = request.form['descricao']
-
+            mensagem_sucesso = "Entrei"
             # Se houver um ID, trata-se de uma edição
             if 'jogo_id' in request.form:
                 jogo_id = request.form['jogo_id']
