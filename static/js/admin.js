@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('atualizarBtn').addEventListener('click', function () {
     // Obtenha os dados do formulário de edição
     const dadosAtualizados = {
-      jogo_id: document.getElementById('jogo_id_edicao').value,
       nome: document.getElementById('nome_edicao').value,
       classificacao: document.getElementById('classificacao_edicao').value,
       ano_lancamento: document.getElementById('ano_lancamento_edicao').value,
@@ -230,6 +229,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Após a atualização, você pode ocultar o formulário de edição
-    document.getElementById('formularioEdicao').style.display = 'none';
+    document.getElementById('formularioEdicao').style.display = 'block';
   });
 });
