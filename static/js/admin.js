@@ -80,38 +80,6 @@ function showForm(formId) {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   // Armazene o estado do submenu no armazenamento local
   localStorage.setItem('submenuId', isExpanded ? '' : submenuId);
 }
@@ -161,24 +129,6 @@ function toggleSubMenu(submenuId) {
   localStorage.setItem('submenuId', isExpanded ? '' : submenuId);
 }
 
-
-// function preencherFormularioEdicao(id, nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
-//   // Atualizar os campos do formulário com os dados do jogo
-//   document.getElementById('jogo_id_edicao').value = id;
-//   document.getElementById('nome_edicao').value = nome;
-//   document.getElementById('classificacao_edicao').value = classificacao;
-//   document.getElementById('ano_lancamento_edicao').value = ano_lancamento;
-//   document.getElementById('genero_edicao').value = genero;
-//   document.getElementById('modo_de_jogo_edicao').value = modo_de_jogo;
-//   document.getElementById('plataforma_edicao').value = plataforma;
-//   document.getElementById('publicadoras_edicao').value = publicadoras;
-//   document.getElementById('descricao_edicao').value = descricao;
-
-//   // Exibir o formulário de edição
-//   document.getElementById('formularioEdicao').style.display = 'block';
-// }
-
-
 function preencherFormularioEdicao(nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
   document.getElementById('nome_edicao').value = nome;
   document.getElementById('classificacao_edicao').value = classificacao;
@@ -190,45 +140,11 @@ function preencherFormularioEdicao(nome, classificacao, ano_lancamento, genero, 
   document.getElementById('descricao_edicao').value = descricao;
 
   // Exibir o formulário de edição
-  document.getElementById('formularioEdicao').style.display = 'block';
+ document.getElementById('formularioEdicao').style.display = 'flex';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Função para preencher o formulário de edição com dados do jogo
-  
-  // Adicione um manipulador de evento para o botão de atualização
   document.getElementById('atualizarBtn').addEventListener('click', function () {
-    // Obtenha os dados do formulário de edição
-    const dadosAtualizados = {
-      nome: document.getElementById('nome_edicao').value,
-      classificacao: document.getElementById('classificacao_edicao').value,
-      ano_lancamento: document.getElementById('ano_lancamento_edicao').value,
-      genero: document.getElementById('genero_edicao').value,
-      modo_de_jogo: document.getElementById('modo_de_jogo_edicao').value,
-      plataforma: document.getElementById('plataforma_edicao').value,
-      publicadoras: document.getElementById('publicadoras_edicao').value,
-      descricao: document.getElementById('descricao_edicao').value,
-    };
-
-    fetch('/admin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dadosAtualizados),
-    })
-    fetch('/admin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dadosAtualizados),
-    })
-    .catch(error => {
-      console.error('Erro na requisição:', error);
-    });
-
-    // Após a atualização, você pode ocultar o formulário de edição
-    document.getElementById('formularioEdicao').style.display = 'block';
+    //document.getElementById('formularioEdicao').style.display = 'none';
   });
 });

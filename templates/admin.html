@@ -82,11 +82,6 @@
           </div>
         </div>
 
-
-
-
-
-
         <!-- Adicione a pesquisa -->
         <div id="pesquisaForm" style="display: none;">
           <form class="pesquisa" method="post" action="/admin">
@@ -106,15 +101,16 @@
               <h1>{{ jogo[1] }}</h1>
               <div class="editarExcluir">
                 <button onclick="preencherFormularioEdicao( '{{ jogo[1] }}', '{{ jogo[2] }}', '{{ jogo[3] }}', '{{ jogo[4] }}', '{{ jogo[5] }}', '{{ jogo[6] }}', '{{ jogo[7] }}', '{{ jogo[8] }}')">Editar</button>
-                <button>Excluir</button>
+                <form method="post" action="/admin">
+                  <input type="hidden" name="excluir" value="{{ jogo[0] }}">
+                  <button type"submit">Excluir</button>
+                </form>
               </div>
-            </div>  
-
-            <div id="formularioEdicao" style="display: none;">
+            </div>
+            <div id="formularioEdicao">
               <h2>Editar Jogo</h2>
-              <form id="jogo_id" method="post" action="/admin">
-              <input type="hidden" name="jogo_id" id="jogo_id_edicao">
-
+              <form for="jogo_id" method="post" action="/admin">
+                <input type="hidden" name="jogo_id" id="jogo_id" value="{{ jogo[0] }}">
 
                 <label for="nome_edicao">Nome do Jogo:</label>
                 <input type="text" name="nome" id="nome_edicao" required>
@@ -138,17 +134,15 @@
                 <input type="text" name="publicadoras" id="publicadoras_edicao" required>
                 
                 <label for="descricao_edicao">Descrição:</label>
-                <textarea name="descricao" id="descricao_edicao" rows="4" required></textarea>
+                <textarea name="descricao" id="descricao_edicao" rows="2" required></textarea>
                 
                 <button type="submit" id="atualizarBtn" >Atualizar</button>
               </form>
             </div>
-            
-
-
             {% endfor %}
           </ul>
           {% endif %}
+          <label> {{ mensagem_sucesso }} </label>
         </div>
 
       </div>
