@@ -1,6 +1,6 @@
 body {
-
   color: #28a745; /* Cor do texto */
+  background-color: #dcdcdc;
 }
 
 .bg-dark {
@@ -56,5 +56,105 @@ body {
   background-color: #343a40;
   color: #ffffff;
   font-weight: bold;
+  transition: background-color 0.3s;
+}
+.editarExcluir button:hover {
+  background-color: #59646e;
 }
 
+#pesquisaForm {
+  display: flex;
+  background-color: #343a40 ;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 20px 10px;
+  font-size: 20px;
+  color: #ffffff;
+  justify-content: center;
+}
+#pesquisaForm input {
+  border-radius: 8px;
+  border: 1px solid;
+  background-color: #e8f0fe;
+  padding: 2px 5px;
+  margin: 0 10px;
+  width: 100vh;
+}
+#pesquisaForm button {
+  border-radius: 8px;
+  border: 1px solid;
+  background-color: #e8f0fe;
+  padding: 2px 8px;
+}
+
+#formularioEdicao {
+  display: none;
+  background-color: #343a40;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+#formularioEdicao form {
+  display: flex;
+  flex-direction: column;
+}
+#formularioEdicao label {
+  margin: 5px 5px;
+}
+#formularioEdicao input {
+  border: 0;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
+#formularioEdicao textarea {
+  border: 0;
+  border-radius: 8px;
+  resize: none;
+}
+#formularioEdicao button {
+  border: 0;
+  border-radius: 8px;
+  margin: 8px 0;
+  padding: 5px 0;
+  background-color: #009c1f;
+  color: #000000;
+  transition: background-color 0.3s;
+}
+#formularioEdicao button:hover {
+  background-color: #00F58E;
+}
+
+.login-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #00ad23;
+}
+.login-box input{
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  padding: 5px;
+}
+.login-box button{
+  width: 95%;
+  margin: 10px 5px;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: none;
+  background-color: #009c1f;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.boxDentro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  background-color: #b9b9b9;
+  border-radius: 8px;
+  padding: 20px 0;
+}

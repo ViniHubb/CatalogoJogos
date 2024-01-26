@@ -57,27 +57,29 @@
         <!-- Adicione um formulário de registro e configure seu estilo inicialmente como oculto -->
         <div id="cadastrar-jogo-form" style="display: none;">
           <div class="login-box">
-            <h2>Cadastrar</h2>
-            <form method="post" action="/admin#">
-              <input type="text" placeholder="Nome do jogo" name="nome" required><br>
-              <input type="text" placeholder="classificacao" name="classificacao" required><br>
-              <input type="number" placeholder="ano de lançamento " name="ano_lancamento" required><br>
-              <input type="text" placeholder="genero" name="genero" required><br>
-              <input type="text" placeholder="modo de jogo" name="modo_de_jogo" required><br>
-              <input type="text" placeholder="plataforma" name="plataforma" required><br>
-              <input type="text" placeholder="publicadoras" name="publicadoras" required><br>
-              <input type="text" placeholder="dedscrição" name="descricao" required><br>
-              <button type="submit">Confirmar</button>
-            </form>
-            <div class="mensagem-erro">
-              {% if mensagem_erro %}
-              <p>{{ mensagem_erro }}</p>
-              {% endif %}
-            </div>
-            <div class="mensagem-sucesso">
-              {% if mensagem_sucesso %}
-              <p>{{ mensagem_sucesso }}</p>
-              {% endif %}
+            <div class="boxDentro">
+              <h2>Cadastrar</h2>
+              <form method="post" action="/admin#">
+                <input type="text" placeholder="Nome do jogo" name="nome" required><br>
+                <input type="text" placeholder="Classificacao" name="classificacao" required><br>
+                <input type="number" placeholder="Ano de lançamento " name="ano_lancamento" required><br>
+                <input type="text" placeholder="Genero" name="genero" required><br>
+                <input type="text" placeholder="Modo de jogo" name="modo_de_jogo" required><br>
+                <input type="text" placeholder="Plataforma" name="plataforma" required><br>
+                <input type="text" placeholder="Publicadoras" name="publicadoras" required><br>
+                <input type="text" placeholder="Dedscrição" name="descricao" required><br>
+                <button type="submit">Confirmar</button>
+              </form>
+              <div class="mensagem-erro">
+                {% if mensagem_erro %}
+                <p>{{ mensagem_erro }}</p>
+                {% endif %}
+              </div>
+              <div class="mensagem-sucesso">
+                {% if mensagem_sucesso %}
+                <p>{{ mensagem_sucesso }}</p>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
@@ -127,10 +129,10 @@
                 <label for="modo_de_jogo_edicao">Modo de Jogo:</label>
                 <input type="text" name="modo_de_jogo" id="modo_de_jogo_edicao" required>
                 
-                <label for="plataforma_edicao">Plataforma:</label>
+                <label for="plataforma_edicao">Plataformas:</label>
                 <input type="text" name="plataforma" id="plataforma_edicao" required>
                 
-                <label for="publicadoras_edicao">Publicadoras:</label>
+                <label for="publicadoras_edicao">Publicadora:</label>
                 <input type="text" name="publicadoras" id="publicadoras_edicao" required>
                 
                 <label for="descricao_edicao">Descrição:</label>
