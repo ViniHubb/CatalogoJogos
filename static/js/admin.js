@@ -140,11 +140,11 @@ function preencherFormularioEdicao(nome, classificacao, ano_lancamento, genero, 
   document.getElementById('descricao_edicao').value = descricao;
 
   // Exibir o formulário de edição
- document.getElementById('formularioEdicao').style.display = 'flex';
+ document.getElementById('formularioEdicao').style.display = 'block';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('atualizarBtn').addEventListener('click', function () {
-    //document.getElementById('formularioEdicao').style.display = 'none';
+    document.getElementById('formularioEdicao').style.display = 'none';
   });
 });

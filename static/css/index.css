@@ -6,7 +6,10 @@ header {
   justify-content: space-between;
   color: #fff;
   font-family: sans-serif;
+  text-decoration: none !important;
 }
+
+
 
 .topo {
   display: flex;
@@ -24,6 +27,7 @@ header {
   font-weight: bold;
   font-size: 20px;
   align-self: center;
+  text-decoration: none;
 }
 
 .user {
@@ -50,6 +54,7 @@ header {
   border-radius: 8px;
   transition: background-color 0.3s;
 }
+
 .button:hover {
   background-color: #008a50;
 }
@@ -141,4 +146,6 @@ footer {
   padding: 20px;
   text-align: center;
   font-family: sans-serif;
+}.a{
+  text-decoration: none !important; 
 }
