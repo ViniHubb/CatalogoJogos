@@ -114,7 +114,12 @@
               <h2>Editar Jogo</h2>
               <form id="formEdicao" method="post" action="/admin">
                 <input type="hidden" name="jogo_id" id="jogo_id_edicao">
+                
+
+                <label for="jogo_id_edicao">Id:</label>
+                <input type="number" name="id" id="jogo_id_edicao" required>
             
+
                 <label for="nome_edicao">Nome do Jogo:</label>
                 <input type="text" name="nome" id="nome_edicao" required>
             
@@ -139,7 +144,7 @@
                 <label for="descricao_edicao">Descrição:</label>
                 <textarea name="descricao" id="descricao_edicao" rows="4" required></textarea>
                 
-                <button type="button">Atualizar</button>
+                <button type="button" id="atualizarBtn" >Atualizar</button>
               </form>
             </div>
             
