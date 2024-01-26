@@ -179,8 +179,7 @@ function toggleSubMenu(submenuId) {
 // }
 
 
-function preencherFormularioEdicao(id, nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
-  document.getElementById('jogo_id_edicao').value = id;
+function preencherFormularioEdicao(nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
   document.getElementById('nome_edicao').value = nome;
   document.getElementById('classificacao_edicao').value = classificacao;
   document.getElementById('ano_lancamento_edicao').value = ano_lancamento;
