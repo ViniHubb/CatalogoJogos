@@ -101,14 +101,16 @@
               <h1>{{ jogo[1] }}</h1>
               <div class="editarExcluir">
                 <button onclick="preencherFormularioEdicao( '{{ jogo[1] }}', '{{ jogo[2] }}', '{{ jogo[3] }}', '{{ jogo[4] }}', '{{ jogo[5] }}', '{{ jogo[6] }}', '{{ jogo[7] }}', '{{ jogo[8] }}')">Editar</button>
-                <button>Excluir</button>
+                <form method="post" action="/admin">
+                  <input type="hidden" name="excluir" value="{{ jogo[0] }}">
+                  <button type"submit">Excluir</button>
+                </form>
               </div>
             </div>
-            <div id="formularioEdicao" style="display: none;">
+            <div id="formularioEdicao">
               <h2>Editar Jogo</h2>
               <form for="jogo_id" method="post" action="/admin">
                 <input type="hidden" name="jogo_id" id="jogo_id" value="{{ jogo[0] }}">
-
 
                 <label for="nome_edicao">Nome do Jogo:</label>
                 <input type="text" name="nome" id="nome_edicao" required>

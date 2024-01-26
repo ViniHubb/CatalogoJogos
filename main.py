@@ -182,7 +182,7 @@ def Admin():
             resultados = cursor.fetchall()
             return render_template('admin.html', jogos=resultados, termo_pesquisa=termo_pesquisa)
         
-        if 'nome' in request.form:
+        elif 'nome' in request.form:
             nome = request.form['nome']
             classificacao = request.form['classificacao']
             ano_lancamento = request.form['ano_lancamento']
@@ -206,6 +206,16 @@ def Admin():
 
             conexao.commit()
             return render_template('admin.html', mensagem_sucesso=mensagem_sucesso)
+
+        elif 'excluir' in request.form:
+            jogo_id = request.form['excluir']
+            query = "DELETE FROM jogos WHERE id=%s"
+            cursor.execute(query, (jogo_id,))
+            mensagem_sucesso = "Jogo excluido com sucesso"
+            conexao.commit()
+
+            return render_template('admin.html', mensagem_sucesso=mensagem_sucesso)
+
 
     # Se a requisição for GET, exibe a página principal sem resultados de pesquisa
     return render_template('admin.html', jogos=None, termo_pesquisa=None)
