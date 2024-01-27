@@ -9,8 +9,6 @@ header {
   text-decoration: none !important;
 }
 
-
-
 .topo {
   display: flex;
 }
@@ -39,22 +37,24 @@ header {
   margin: 0 10px;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 0 1px #fff;
+  box-shadow: 0 0 2px #fff;
+  font-weight: bold;
 }
 
 .button {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   text-align: center;
   background-color: #00F58E;
   color: #141414;
   font-family: sans-serif;
   font-weight: bold;
-  padding: 10px;
+  padding: 20px 12px;
   max-height: 20px;
   border-radius: 8px;
   transition: background-color 0.3s;
 }
-
 .button:hover {
   background-color: #008a50;
 }
@@ -146,6 +146,9 @@ footer {
   padding: 20px;
   text-align: center;
   font-family: sans-serif;
-}.a{
-  text-decoration: none !important; 
+}
+
+a:hover{
+  text-decoration: none;
+  color: #141414;
 }

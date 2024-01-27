@@ -20,11 +20,9 @@
   <link rel="stylesheet" href="static/css/reset.css">
   <link rel="stylesheet" href="static/css/index.css">
  
-
-
 </head>
 <body class="superHero">
-  <header style="text-decoration: none;">
+  <header>
     <a href="/">
       <div class="topo">
         <img id="icone" src="static/img/icon2.png" alt="icone">
@@ -37,7 +35,9 @@
         <a class="button" href="/logout">Logout</a>
       </div>
     {% else %}
-      <a class="button" href="/login">Login/Register</a>
+      <div class="user">
+        <a class="button" href="/login">Login/Register</a>
+      </div>
     {% endif %}
   </header>
 

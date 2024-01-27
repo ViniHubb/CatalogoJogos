@@ -25,6 +25,7 @@ header {
   font-size: 20px;
   align-self: center;
 }
+
 .user {
   display: flex;
   align-items: center;
@@ -34,7 +35,7 @@ header {
   margin: 0 10px;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 0 1px #fff;
+  box-shadow: 0 0 2px #fff;
 }
 
 .button {
@@ -103,19 +104,18 @@ main {
 }
 
 #estrela {
-  width: 18px;
   height: 18px;
-  padding: 0 20px 10px 5px;
-  margin: 16px 0 0 0;
+  padding: 2px 20px 10px 8px;
+  margin-top: 0;
+  color: yellow;
+  font-weight: 100;
+  font-size: 22px;
 }
 
 #descricao {
   font-size: 18px;
   line-height: 1.6;
   width: 100%;
-  /* padding: 10px 10px;
-  border-radius: 8px;
-  background-color: #282828; */
 }
 
 .imagem {
@@ -220,9 +220,9 @@ main {
   background-color: #282828;;
   color: yellow;
   margin: 0 0 0 20px;
-  font-size: 50px;
+  font-size: 24px;
   font-weight: bold;
-  width: 172px;
+  width: 160px;
   height: 38px;
   transition: background-color 0.3s;
 }
@@ -257,12 +257,26 @@ main {
   font-size: 20px;
   margin: 0 0 20px 0;
 }
+.boxAnalises h3 {
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
 
 .analise {
-  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
   margin: 10px 0;
   border-radius: 8px;
   background-color: #282828;
+  justify-content: space-between;
+}
+.analise p {
+  width: 100%;
+}
+#estrela_commit {
+  color: yellow;
+  font-size: 20px;
 }
 
 footer {

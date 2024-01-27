@@ -31,10 +31,28 @@
     <div class="conteinerHero">
       <div class="text">
         <div>
-          <h2>{{ jogo[1] }} {{ menssagem }}</h2>
+          <h2>{{ jogo[1] }}</h2>
           <div class="dentro">
-            <h3>{{ nota }}</h3> 
-            <img id="estrela" src="static/img/estrela.png" alt="Estrela">
+            {% if nota != 0 %}
+              <h3>{{ nota }}</h3>
+              <h3 id="estrela">
+                {% if nota >= 1 and nota < 2 %}
+                  &#9733; &#9734; &#9734; &#9734; &#9734;
+                {% endif %}
+                {% if nota >= 2 and nota < 3 %}
+                  &#9733; &#9733; &#9734; &#9734; &#9734;
+                {% endif %}
+                {% if nota >= 3 and nota < 4 %}
+                  &#9733; &#9733; &#9733; &#9734; &#9734;
+                {% endif %}
+                {% if nota >= 4 and nota < 5 %}
+                  &#9733; &#9733; &#9733; &#9733; &#9734;
+                {% endif %}
+                {% if nota >= 5 %}
+                  &#9733; &#9733; &#9733; &#9733; &#9733;
+                {% endif %}
+              </h3>
+            {% endif %}
             <h3>Ano: {{ jogo[3] }}</h3>
           </div>
           <p id="descricao">
@@ -76,7 +94,7 @@
           <img id="game" src="static/img/jogos/{{ jogo[0] }}.jpg">
       </div>
     </div>
-    {% if current_user.is_authenticated %}
+    {% if current_user.is_authenticated and menssagem%}
       <div class="classifica">
         <form action="/jogo?id={{ jogo[0] }}" method="post">
           <div class="nota">
@@ -84,11 +102,11 @@
             <input type="hidden" name="email" value="{{ current_user.id }}">
             <input type="submit" value="Avaliar">
             <select name="nota" id="nota">
-                <option value="1">*</option>
-                <option value="2">* *</option>
-                <option value="3">* * *</option>
-                <option value="4">* * * *</option>
-                <option value="5" selected="selected">* * * * *</option>
+                <option value="1">&#9733;</option>
+                <option value="2">&#9733; &#9733;</option>
+                <option value="3">&#9733; &#9733; &#9733;</option>
+                <option value="4">&#9733; &#9733; &#9733; &#9733;</option>
+                <option value="5" selected="selected">&#9733; &#9733; &#9733; &#9733; &#9733;</option>
             </select>
           </div>
           <div class="comentario">
@@ -107,8 +125,24 @@
         <h2>Análises de usuários</h2>
         {% for analise in analises %}
             <div class="analise">
-              <h3>{{ analise[2] }}
-              <h3>Nota: {{ analise[0] }}</h3>
+              <h2>{{ analise[2] }}</h2>
+              <h3 id="estrela_commit">
+                {% if analise[0] >= 1 %}
+                  &#9733;
+                {% endif %}
+                {% if analise[0] >= 2 %}
+                  &#9733;
+                {% endif %}
+                {% if analise[0] >= 3 %}
+                  &#9733;
+                {% endif %}
+                {% if analise[0] >= 4 %}
+                  &#9733;
+                {% endif %}
+                {% if analise[0] >= 5 %}
+                  &#9733;
+                {% endif %}
+              </h3>
               <p>{{ analise[1] }}</p>
             </div>  
         {% endfor %}

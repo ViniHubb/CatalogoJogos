@@ -8,7 +8,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='143786',
+    password='1234',
     database='catalogo',
 )
 
@@ -72,7 +72,7 @@ def PaginaJogo():
     jogo_info = None
     analises_com_nomes = None
     media_notas = 0.0
-    menssagem = ''
+    menssagem = 1
 
     if jogo_id is not None:
         cursor = conexao.cursor()
@@ -81,13 +81,17 @@ def PaginaJogo():
         jogo_info = cursor.fetchone()
 
         query_analises = """
-        SELECT analises.nota, analises.comentario, usuarios.nome
+        SELECT analises.nota, analises.comentario, usuarios.nome, usuarios.email
         FROM analises 
         JOIN usuarios ON analises.email_usuario = usuarios.email 
         WHERE analises.id_jogo = %s;
         """
         cursor.execute(query_analises, (jogo_id,))
         analises_com_nomes = cursor.fetchall()
+
+        if current_user.is_authenticated:
+            for current_user.id in analises_com_nomes:
+                menssagem = 0
 
         if analises_com_nomes != []:
             query_media = "SELECT AVG(nota) FROM analises WHERE id_jogo = %s"
@@ -103,17 +107,16 @@ def PaginaJogo():
         query_user = "SELECT * FROM analises WHERE email_usuario = %s AND id_jogo = %s"
         cursor.execute(query_user, (email,jogo_id))
         if cursor.fetchone():
-            menssagem = "Você ja analisou esse jogo"
+            menssagem = 0
         else:
             cursor.execute("INSERT INTO analises (nota, comentario, id_jogo, email_usuario) VALUES (%s, %s, %s, %s)", (nota, comentario, jogo_id, email))
             conexao.commit()
-            menssagem = "Sucesso, obrigado pela análise!"
 
     if jogo_info:
         return render_template('paginaJogo.html',
             menssagem=menssagem,
             jogo=jogo_info, 
-            analises=analises_com_nomes, 
+            analises=analises_com_nomes,
             nota=media_notas
         )
     else:
