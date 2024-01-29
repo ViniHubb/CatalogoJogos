@@ -42,11 +42,11 @@ def HomePage ():
 
      return render_template('index.html')
 
-
 @app.route('/catalogo', methods=['GET', 'POST'])
 def Catalogo():
     cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM jogos ORDER BY id DESC LIMIT 10")
+    cursor.execute("SELECT * FROM jogos")
+    #cursor.execute("SELECT * FROM jogos ORDER BY id DESC LIMIT 10")
     resultados = cursor.fetchall()
 
     if request.method == 'POST':
