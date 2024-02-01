@@ -125,6 +125,13 @@ function toggleSubMenu(submenuId) {
     }
   }
 
+
+    // Se o submenu "Pesquisa Usuario" for clicado, exibe o formulário de registro
+    if (submenuId === 'submenu-usuario') {
+      document.getElementById('pesquisaFormUser').style.display = 'block';
+    } else {
+      document.getElementById('pesquisaFormUser').style.display = 'none';
+    }
   // Armazene o estado do submenu no armazenamento local
   localStorage.setItem('submenuId', isExpanded ? '' : submenuId);
 }
@@ -148,3 +155,15 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('formularioEdicao').style.display = 'none';
   });
 });
+
+
+
+
+function preencherFormularioEdicaoUsuario(email, nome, senha) {
+  document.getElementById('email_edicao').value = email;
+  document.getElementById('nome_edicao').value = nome;
+  document.getElementById('senha_edicao').value = senha;
+ 
+  // Exibir o formulário de edição
+ document.getElementById('formularioEdicaoUsuario').style.display = 'block';
+}

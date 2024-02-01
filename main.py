@@ -8,7 +8,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='1234',
+    password='143786',
     database='catalogo',
 )
 
@@ -218,7 +218,36 @@ def Admin():
             conexao.commit()
 
             return render_template('admin.html', mensagem_sucesso=mensagem_sucesso)
+        
+        elif 'termo_pesquisa_usuarios' in request.form:
+            termo_pesquisa_usuarios = request.form['termo_pesquisa_usuarios']
+            query_usuarios = "SELECT * FROM usuarios WHERE nome LIKE %s"
+            cursor.execute(query_usuarios, ('%' + termo_pesquisa_usuarios + '%',))
+            resultados_usuarios = cursor.fetchall()
+            return render_template('admin.html', usuarios=resultados_usuarios, termo_pesquisa_usuarios=termo_pesquisa_usuarios)
+        
+        elif 'excluirUser' in request.form:
+            user_id = request.form['excluirUser']
+            query0="DELETE FROM analises WHERE email_usuario = %s"
+            query = "DELETE FROM usuarios WHERE email=%s"
+            cursor.execute(query0, (user_id,))
+            cursor.execute(query, (user_id,))
+            mensagem_sucesso = "usuario excluido com sucesso"
+            conexao.commit()
 
+            return render_template('admin.html', mensagem_sucesso=mensagem_sucesso)
+        
+        elif 'usuario_id' in request.form:
+            email = request.form['email']
+            nome = request.form['nomeUser']
+            senha = request.form['senha']
+            
+            query = "UPDATE usuarios SET email=%s, nome=%s, senha=%s  WHERE email=%s"
+            cursor.execute(query, (email, nome, senha, email))
+            mensagem_sucesso = "Jogo atualizado com sucesso!"
+            conexao.commit()
+
+            return render_template('admin.html', mensagem_sucesso=mensagem_sucesso)
 
     # Se a requisição for GET, exibe a página principal sem resultados de pesquisa
     return render_template('admin.html', jogos=None, termo_pesquisa=None)

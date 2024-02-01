@@ -105,7 +105,7 @@
                 <button onclick="preencherFormularioEdicao( '{{ jogo[1] }}', '{{ jogo[2] }}', '{{ jogo[3] }}', '{{ jogo[4] }}', '{{ jogo[5] }}', '{{ jogo[6] }}', '{{ jogo[7] }}', '{{ jogo[8] }}')">Editar</button>
                 <form method="post" action="/admin">
                   <input type="hidden" name="excluir" value="{{ jogo[0] }}">
-                  <button type"submit">Excluir</button>
+                  <button type="submit">Excluir</button>
                 </form>
               </div>
             </div>
@@ -145,6 +145,70 @@
           </ul>
           {% endif %}
         </div>
+
+
+
+
+        <div id="pesquisaFormUser" style="display: none;">
+          <form class="pesquisa" method="post" action="/admin">
+            <label for="termo_pesquisa_usuarios">Pesquisar usuario por nome:</label>
+            <input type="text" name="termo_pesquisa_usuarios" id="termo_pesquisa_usuarios" required>
+            <button type="submit" id="pesquisarUserBtn">Pesquisar</button>
+          </form>
+        </div>
+
+        <!-- Adicione um ID ao elemento resultadosPesquisa -->
+        <div id="resultadosPesquisaUsuario">
+          {% if usuarios %}
+          <h3>Resultados da pesquisa para '{{ termo_pesquisa_usuarios }}':</h3>
+          <ul>
+            {% for usuarios in usuarios %}
+            <div class="cadaResultadoUsuario">
+              <h1>{{ usuarios[2] }}</h1>
+              <div class="editarExcluirUsuario">
+                <button onclick="preencherFormularioEdicaoUsuario( '{{ usuarios[0] }}', '{{ usuarios[2] }}', '{{ usuarios[1] }}')">Editar</button>
+                <form method="post" action="/admin">
+                  <input type="hidden" name="excluirUser" value="{{ usuarios[0] }}">
+                  <button type="submit">Excluir</button>
+                </form>
+              </div>
+            </div>
+            <div id="formularioEdicaoUsuario">
+              <h2>Editar usuario</h2>
+              <form for="usuario_id" method="post" action="/admin">
+                <input type="hidden" name="usuario_id" id="jogo_id" value="{{ usuarios[0] }}">
+
+                <label for="email_edicao">Email:</label>
+                <input type="text" name="email" id="email_edicao" required>
+
+                <label for="nome_edicao">Nome:</label>
+                <input type="text" name="nomeUser" id="nome_edicao" required>
+                
+                <label for="senha_edicao">Senha:</label>
+                <input name="senha" id="senha_edicao" rows="2" required></input>
+                
+                <button type="submit" id="atualizarUserBtn" >Atualizar</button>
+              </form>
+            </div>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       </div>
     </div>
