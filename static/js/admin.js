@@ -158,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
 function preencherFormularioEdicaoUsuario(email, nome, senha) {
   document.getElementById('email_edicao').value = email;
   document.getElementById('nome_edicao').value = nome;

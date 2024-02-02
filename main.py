@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-import mysql.connector
+import mysql.connector, os
 from flask import jsonify
 
 
@@ -8,7 +8,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='143786',
+    password='1234',
     database='catalogo',
 )
 
@@ -194,17 +194,32 @@ def Admin():
             plataforma = request.form['plataforma']
             publicadoras = request.form['publicadoras']
             descricao = request.form['descricao']
-            mensagem_sucesso = "Entrei"
+            imagem = request.files['imagem']
             # Se houver um ID, trata-se de uma edição
             if 'jogo_id' in request.form:
-                jogo_id = request.form['jogo_id']
-                query = "UPDATE jogos SET nome=%s, classificacao=%s, ano_lancamento=%s, genero=%s, modo_de_jogo=%s, plataforma=%s, publicadoras=%s, descricao=%s WHERE id=%s"
-                cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao, jogo_id))
-                mensagem_sucesso = "Jogo atualizado com sucesso!"
+                if imagem.filename != "":
+                    jogo_id = request.form['jogo_id']
+                    query_caminho = "SELECT imagem FROM jogos WHERE id=%s"
+                    cursor.execute(query_caminho, (jogo_id,))
+                    caminho_imagem = cursor.fetchone()
+                    os.remove(caminho_imagem[0])
+                    
+                    nome_imagem = str("static/img/jogos/" + imagem.filename)
+                    imagem.save(nome_imagem)
+                    query = "UPDATE jogos SET nome=%s, classificacao=%s, ano_lancamento=%s, genero=%s, modo_de_jogo=%s, plataforma=%s, publicadoras=%s, descricao=%s, imagem=%s WHERE id=%s"
+                    cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao, nome_imagem, jogo_id))
+                    mensagem_sucesso = "Jogo atualizado com sucesso!"
+                else:
+                    jogo_id = request.form['jogo_id']
+                    query = "UPDATE jogos SET nome=%s, classificacao=%s, ano_lancamento=%s, genero=%s, modo_de_jogo=%s, plataforma=%s, publicadoras=%s, descricao=%s WHERE id=%s"
+                    cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao, jogo_id))
+                    mensagem_sucesso = "Jogo atualizado com sucesso!"
             else:
                 # Se não houver um ID, trata-se de um novo cadastro
-                query = "INSERT INTO jogos (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-                cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao))
+                nome_imagem = str("static/img/jogos/" + imagem.filename)
+                imagem.save(nome_imagem)
+                query = "INSERT INTO jogos (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao, imagem) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                cursor.execute(query, (nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao, nome_imagem))
                 mensagem_sucesso = "Jogo cadastrado com sucesso!"
 
             conexao.commit()

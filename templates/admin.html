@@ -59,7 +59,7 @@
           <div class="login-box">
             <div class="boxDentro">
               <h2>Cadastrar</h2>
-              <form method="post" action="/admin#">
+              <form method="post" action="/admin#" enctype="multipart/form-data">
                 <input type="text" placeholder="Nome do jogo" name="nome" required><br>
                 <input type="text" placeholder="Classificacao" name="classificacao" required><br>
                 <input type="number" placeholder="Ano de lançamento " name="ano_lancamento" required><br>
@@ -68,6 +68,7 @@
                 <input type="text" placeholder="Plataforma" name="plataforma" required><br>
                 <input type="text" placeholder="Publicadoras" name="publicadoras" required><br>
                 <input type="text" placeholder="Dedscrição" name="descricao" required><br>
+                <input type="file" placeholder="Imagem" name="imagem" accept="image/*" required><br>
                 <button type="submit">Confirmar</button>
               </form>
               <div class="mensagem-erro">
@@ -111,7 +112,7 @@
             </div>
             <div id="formularioEdicao">
               <h2>Editar Jogo</h2>
-              <form for="jogo_id" method="post" action="/admin">
+              <form for="jogo_id" method="post" action="/admin" enctype="multipart/form-data">
                 <input type="hidden" name="jogo_id" id="jogo_id" value="{{ jogo[0] }}">
 
                 <label for="nome_edicao">Nome do Jogo:</label>
@@ -138,6 +139,9 @@
                 <label for="descricao_edicao">Descrição:</label>
                 <textarea name="descricao" id="descricao_edicao" rows="2" required></textarea>
                 
+                <label for="descricao_edicao">Imagem do Jogo:</label>
+                <input type="file" id="imagem" name="imagem" accept="image/*">
+
                 <button type="submit" id="atualizarBtn" >Atualizar</button>
               </form>
             </div>
@@ -145,9 +149,6 @@
           </ul>
           {% endif %}
         </div>
-
-
-
 
         <div id="pesquisaFormUser" style="display: none;">
           <form class="pesquisa" method="post" action="/admin">
@@ -194,8 +195,6 @@
           </ul>
           {% endif %}
         </div>
-
-
 
 
 

@@ -43,7 +43,7 @@
                     {% for jogo in jogos %}
                         <div class="jogo">
                             <a href="/jogo?id={{ jogo[0] }}">
-                            <img src="static/img/jogos/{{ jogo[0] }}.jpg"></a>
+                            <img src="{{ jogo[9] }}"></a>
                             <h3>{{ jogo[1] }}</h3>  <!-- jogo[1] representa o nome do jogo -->
                         </div>  
                     {% endfor %}
