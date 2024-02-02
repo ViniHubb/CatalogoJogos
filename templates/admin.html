@@ -177,19 +177,19 @@
                 </form>
               </div>
             </div>
-            <div id="formularioEdicaoUsuario">
+            <div id="formularioEdicaoUsuario{{usuarios[0]}}">
               <h2>Editar usuario</h2>
               <form for="usuario_id" method="post" action="/admin">
                 <input type="hidden" name="usuario_id" id="jogo_id" value="{{ usuarios[0] }}">
 
                 <label for="email_edicao">Email:</label>
-                <input type="text" name="email" id="email_edicao" required>
+                <input type="text" name="email" id="email_edicao{{usuarios[0]}}" required>
 
                 <label for="nome_edicao">Nome:</label>
-                <input type="text" name="nomeUser" id="nome_edicao" required>
+                <input type="text" name="nomeUser" id="nome_edicao{{usuarios[0]}}" required>
                 
                 <label for="senha_edicao">Senha:</label>
-                <input name="senha" id="senha_edicao" rows="2" required></input>
+                <input name="senha" id="senha_edicao{{usuarios[0]}}" required></input>
                 
                 <button type="submit" id="atualizarUserBtn" >Atualizar</button>
               </form>

@@ -185,10 +185,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function preencherFormularioEdicaoUsuario(email, nome, senha) {
-  document.getElementById('email_edicao').value = email;
-  document.getElementById('nome_edicao').value = nome;
-  document.getElementById('senha_edicao').value = senha;
- 
+// Obtenha a referência ao formulário de edição usando o ID
+var formularioEdicaoUser = document.getElementById('formularioEdicaoUsuario'+email);
+
+// Verifique se o formulário está atualmente visível
+var Visivel = formularioEdicaoUser.style.display === 'block';
+
+  if (!Visivel) {
+    document.getElementById('email_edicao'+email).value = email;
+    document.getElementById('nome_edicao'+email).value = nome;
+    document.getElementById('senha_edicao'+email).value = senha;
+  }
+
+formularioEdicaoUser.style.display = Visivel ? 'none' : 'block';
   // Exibir o formulário de edição
- document.getElementById('formularioEdicaoUsuario').style.display = 'block';
 }
