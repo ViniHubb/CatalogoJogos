@@ -136,18 +136,44 @@ function toggleSubMenu(submenuId) {
   localStorage.setItem('submenuId', isExpanded ? '' : submenuId);
 }
 
-function preencherFormularioEdicao(nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
-  document.getElementById('nome_edicao').value = nome;
-  document.getElementById('classificacao_edicao').value = classificacao;
-  document.getElementById('ano_lancamento_edicao').value = ano_lancamento;
-  document.getElementById('genero_edicao').value = genero;
-  document.getElementById('modo_de_jogo_edicao').value = modo_de_jogo;
-  document.getElementById('plataforma_edicao').value = plataforma;
-  document.getElementById('publicadoras_edicao').value = publicadoras;
-  document.getElementById('descricao_edicao').value = descricao;
+// function preencherFormularioEdicao(jogo_id,nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
+//   document.getElementById('nome_edicao'+jogo_id).value = nome;
+//   document.getElementById('classificacao_edicao'+jogo_id).value = classificacao;
+//   document.getElementById('ano_lancamento_edicao'+jogo_id).value = ano_lancamento;
+//   document.getElementById('genero_edicao'+jogo_id).value = genero;
+//   document.getElementById('modo_de_jogo_edicao'+jogo_id).value = modo_de_jogo;
+//   document.getElementById('plataforma_edicao'+jogo_id).value = plataforma;
+//   document.getElementById('publicadoras_edicao'+jogo_id).value = publicadoras;
+//   document.getElementById('descricao_edicao'+jogo_id).value = descricao;
 
-  // Exibir o formulário de edição
- document.getElementById('formularioEdicao').style.display = 'block';
+//   // Exibir o formulário de edição
+//     document.getElementById('formularioEdicao'+jogo_id).style.display = 'block';
+  
+
+// }
+
+// Exibe formulario de edição
+function toggleFormularioEdicao(jogo_id, nome, classificacao, ano_lancamento, genero, modo_de_jogo, plataforma, publicadoras, descricao) {
+  // Obtenha a referência ao formulário de edição usando o ID
+  var formularioEdicao = document.getElementById('formularioEdicao' + jogo_id);
+
+  // Verifique se o formulário está atualmente visível
+  var isVisivel = formularioEdicao.style.display === 'block';
+
+  if (!isVisivel) {
+    // Se o formulário não estiver visível, preencha os campos
+    document.getElementById('nome_edicao' + jogo_id).value = nome;
+    document.getElementById('classificacao_edicao' + jogo_id).value = classificacao;
+    document.getElementById('ano_lancamento_edicao' + jogo_id).value = ano_lancamento;
+    document.getElementById('genero_edicao' + jogo_id).value = genero;
+    document.getElementById('modo_de_jogo_edicao' + jogo_id).value = modo_de_jogo;
+    document.getElementById('plataforma_edicao' + jogo_id).value = plataforma;
+    document.getElementById('publicadoras_edicao' + jogo_id).value = publicadoras;
+    document.getElementById('descricao_edicao' + jogo_id).value = descricao;
+  }
+
+  // Alternar entre exibir e ocultar o formulário
+  formularioEdicao.style.display = isVisivel ? 'none' : 'block';
 }
 
 document.addEventListener('DOMContentLoaded', function () {

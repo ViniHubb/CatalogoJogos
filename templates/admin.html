@@ -103,41 +103,43 @@
             <div class="cadaResultado">
               <h1>{{ jogo[1] }}</h1>
               <div class="editarExcluir">
-                <button onclick="preencherFormularioEdicao( '{{ jogo[1] }}', '{{ jogo[2] }}', '{{ jogo[3] }}', '{{ jogo[4] }}', '{{ jogo[5] }}', '{{ jogo[6] }}', '{{ jogo[7] }}', '{{ jogo[8] }}')">Editar</button>
+                <button onclick="toggleFormularioEdicao( '{{ jogo[0] }}' , '{{ jogo[1] }}', '{{ jogo[2] }}', '{{ jogo[3] }}', '{{ jogo[4] }}', '{{ jogo[5] }}', '{{ jogo[6] }}', '{{ jogo[7] }}', '{{ jogo[8] }}')">Editar</button>
                 <form method="post" action="/admin">
                   <input type="hidden" name="excluir" value="{{ jogo[0] }}">
                   <button type="submit">Excluir</button>
                 </form>
               </div>
             </div>
+
             <div id="formularioEdicao">
+            <div id="formularioEdicao{{jogo[0]}}" style="display: none;">
               <h2>Editar Jogo</h2>
               <form for="jogo_id" method="post" action="/admin" enctype="multipart/form-data">
                 <input type="hidden" name="jogo_id" id="jogo_id" value="{{ jogo[0] }}">
 
                 <label for="nome_edicao">Nome do Jogo:</label>
-                <input type="text" name="nome" id="nome_edicao" required>
+                <input type="text" name="nome" id="nome_edicao{{jogo[0]}}" required>
             
                 <label for="classificacao_edicao">Classificação:</label>
-                <input type="text" name="classificacao" id="classificacao_edicao" required>
+                <input type="text" name="classificacao" id="classificacao_edicao{{jogo[0]}}" required>
             
                 <label for="ano_lancamento_edicao">Ano de Lançamento:</label>
-                <input type="number" name="ano_lancamento" id="ano_lancamento_edicao" required>
+                <input type="number" name="ano_lancamento" id="ano_lancamento_edicao{{jogo[0]}}" required>
             
                 <label for="genero_edicao">Gênero:</label>
-                <input type="text" name="genero" id="genero_edicao" required>
+                <input type="text" name="genero" id="genero_edicao{{jogo[0]}}" required>
                 
                 <label for="modo_de_jogo_edicao">Modo de Jogo:</label>
-                <input type="text" name="modo_de_jogo" id="modo_de_jogo_edicao" required>
+                <input type="text" name="modo_de_jogo" id="modo_de_jogo_edicao{{jogo[0]}}" required>
                 
                 <label for="plataforma_edicao">Plataformas:</label>
-                <input type="text" name="plataforma" id="plataforma_edicao" required>
+                <input type="text" name="plataforma" id="plataforma_edicao{{jogo[0]}}" required>
                 
                 <label for="publicadoras_edicao">Publicadora:</label>
-                <input type="text" name="publicadoras" id="publicadoras_edicao" required>
+                <input type="text" name="publicadoras" id="publicadoras_edicao{{jogo[0]}}" required>
                 
                 <label for="descricao_edicao">Descrição:</label>
-                <textarea name="descricao" id="descricao_edicao" rows="2" required></textarea>
+                <textarea name="descricao" id="descricao_edicao{{jogo[0]}}" rows="2" required></textarea>
                 
                 <label for="descricao_edicao">Imagem do Jogo:</label>
                 <input type="file" id="imagem" name="imagem" accept="image/*">
@@ -145,6 +147,7 @@
                 <button type="submit" id="atualizarBtn" >Atualizar</button>
               </form>
             </div>
+          </div>
             {% endfor %}
           </ul>
           {% endif %}
