@@ -24,7 +24,7 @@
       <div class="bg-dark col-auto col-md-2 min-vh-100">
         <div class="bg-dark p-2">
           <a class="d-flex text-decoration-none align-items-center">
-            <span class="fs-4 d-none d-sm-inline"> AdminMenu </span>
+            <a href="/admin" style="text-decoration:none; color: #009c1f;"><span class="fs-4 d-none d-sm-inline"> AdminMenu </span></a>
           </a>
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
@@ -51,7 +51,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-md-10">
+    <div class="col-md-10">
         <!-- Seu conteúdo adicional aqui -->
 
         <!-- Adicione um formulário de registro e configure seu estilo inicialmente como oculto -->
@@ -162,60 +162,52 @@
         </div>
 
         <!-- Adicione um ID ao elemento resultadosPesquisa -->
-        <div id="resultadosPesquisaUsuario">
+        
           {% if usuarios %}
-          <h3>Resultados da pesquisa para '{{ termo_pesquisa_usuarios }}':</h3>
-          <ul>
-            {% for usuarios in usuarios %}
-            <div class="cadaResultadoUsuario">
-              <h1>{{ usuarios[2] }}</h1>
-              <div class="editarExcluirUsuario">
-                <button onclick="preencherFormularioEdicaoUsuario( '{{ usuarios[0] }}', '{{ usuarios[2] }}', '{{ usuarios[1] }}')">Editar</button>
-                <form method="post" action="/admin">
-                  <input type="hidden" name="excluirUser" value="{{ usuarios[0] }}">
-                  <button type="submit">Excluir</button>
-                </form>
-              </div>
-            </div>
-            <div id="formularioEdicaoUsuario{{usuarios[0]}}">
-              <h2>Editar usuario</h2>
-              <form for="usuario_id" method="post" action="/admin">
-                <input type="hidden" name="usuario_id" id="jogo_id" value="{{ usuarios[0] }}">
+            <h3 id="textoTermoUsuario">Resultados da pesquisa para '{{ termo_pesquisa_usuarios }}':</h3>
+            <div id="resultadosPesquisaUsuario">
+              <ul>
+                  {% for usuarios in usuarios %}
+                    <div id="ususarioTodo">
+                      <div class="cadaResultadoUsuario">
+                        <div class="editarExcluirUsuario">
+                          <form id="botoesUser" method="post" action="/admin">
+                            <h1>{{ usuarios[2] }}</h1>
+                            <div>
+                              <button onclick="preencherFormularioEdicaoUsuario( '{{ usuarios[0] }}', '{{ usuarios[2] }}', '{{ usuarios[1] }}')">Editar</button>
+                              <input type="hidden" name="excluirUser" value="{{ usuarios[0] }}">
+                              <button type="submit">Excluir</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div id="formularioEdicaoUsuario{{usuarios[0]}}">
+                        <h4>Editar usuario</h4>
+                        <form for="usuario_id" method="post" action="/admin">
+                          <input type="hidden" name="usuario_id" id="jogo_id" value="{{ usuarios[0] }}">
 
-                <label for="email_edicao">Email:</label>
-                <input type="text" name="email" id="email_edicao{{usuarios[0]}}" required>
+                          <label for="email_edicao">Email:</label>
+                          <input type="text" name="email" id="email_edicao{{usuarios[0]}}" required>
 
-                <label for="nome_edicao">Nome:</label>
-                <input type="text" name="nomeUser" id="nome_edicao{{usuarios[0]}}" required>
-                
-                <label for="senha_edicao">Senha:</label>
-                <input name="senha" id="senha_edicao{{usuarios[0]}}" required></input>
-                
-                <button type="submit" id="atualizarUserBtn" >Atualizar</button>
-              </form>
+                          <label for="nome_edicao">Nome:</label>
+                          <input type="text" name="nomeUser" id="nome_edicao{{usuarios[0]}}" required>
+                          
+                          <label for="senha_edicao">Senha:</label>
+                          <input name="senha" id="senha_edicao{{usuarios[0]}}" required></input>
+                          
+                          <button type="submit" id="atualizarUserBtn" >Atualizar</button>
+                        </form>
+                      </div>
+                    </div>
+                  {% endfor %}
+              </ul>
             </div>
-            {% endfor %}
-          </ul>
           {% endif %}
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
       </div>
     </div>
   </div>
-  </div>
+</div>
 
   <script src="/static/js/bootstrap.bundle.js"></script>
 

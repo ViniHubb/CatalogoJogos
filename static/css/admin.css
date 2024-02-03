@@ -85,6 +85,10 @@ body {
   border: 1px solid;
   background-color: #e8f0fe;
   padding: 2px 8px;
+  transition: background-color 0.3s;
+}
+#pesquisaForm button:hover {
+  background-color: #a0a5af;
 }
 
 #formularioEdicao {
@@ -157,4 +161,98 @@ body {
   background-color: #b9b9b9;
   border-radius: 8px;
   padding: 20px 0;
+}
+
+#pesquisaFormUser {
+  background-color: #000000;
+  display: flex;
+  background-color: #343a40 ;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 20px 10px;
+  font-size: 20px;
+  color: #ffffff;
+  justify-content: center;
+}
+#pesquisaFormUser input {
+  border-radius: 8px;
+  border: 1px solid;
+  background-color: #e8f0fe;
+  padding: 2px 5px;
+  margin: 0 10px;
+  width: 100vh;
+}
+#pesquisaFormUser button {
+  border-radius: 8px;
+  border: 1px solid;
+  background-color: #e8f0fe;
+  padding: 2px 8px;
+  transition: background-color 0.3s;
+}
+#pesquisaFormUser button:hover {
+  background-color: #a0a5af;
+}
+
+#resultadosPesquisaUsuario {
+  background-color: #343a40;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 0 10px 0 10px;
+}
+#resultadosPesquisaUsuario form {
+  display: flex;
+  flex-direction: column;
+}
+#resultadosPesquisaUsuario label {
+  margin: 5px 5px;
+}
+#resultadosPesquisaUsuario input {
+  border: 0;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
+#resultadosPesquisaUsuario button {
+  border: 0;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 5px 0;
+  background-color: #009c1f;
+  color: #000000;
+  transition: background-color 0.3s;
+}
+#resultadosPesquisaUsuario button:hover {
+  background-color: #00F58E;
+}
+#resultadosPesquisaUsuario ul{
+  margin: 10px 0;
+  padding: 5px 5px;
+}
+
+#ususarioTodo{
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: 5px solid #dcdcdc;
+  border-radius: 8px;
+}
+
+#botoesUser{
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+#botoesUser button{
+  margin: 8px 0px 0px 8px;
+  padding: 5px 10px;
+}
+#botoesUser button:last-of-type{
+  transition: background-color 0.3s;
+  background-color: rgb(180, 0, 0);
+}
+#botoesUser button:last-of-type:hover{
+  background-color: rgb(255, 0, 0);
+}
+
+#textoTermoUsuario {
+  padding: 0 0 20px 10px;
 }
