@@ -8,16 +8,18 @@
 <h2>Executando o Projeto</h2>
 <p>1.Abra o seu ambiente Python no terminal do VSCode ou outro compilador.</p>
 <p>2.Execute o seguinte comando para instalar as dependências:</p>
+
 ```
-$ pip install flask flask-login
+pip install flask flask-login
 ```
-<p>3.Execute o aplicativo Flask usando o seguinte comando:</P>
+<p>3.Execute o aplicativo Flask usando o seguinte comando:</p>
+
 ```
-$ python app.py
+python app.py
 ```
 <p>4.Abra seu navegador e acesse http://localhost:5000</p>
 
-obs: fica a critério rodar todas as instalações no ambiente virtual <br>
+obs: fica a critério rodar todas as instalações no ambiente virtual
 
 <p>Agora você pode usar o nosso site - Catalogo de Jogos para explorar jogos, adicionar novos jogos, e muito mais! Divirta-se explorando o mundo dos games! </p>
 
