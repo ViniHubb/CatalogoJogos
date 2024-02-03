@@ -20,7 +20,7 @@ python app.py
 <p>4. Abra seu navegador e acesse:</p>
 
 ```
-<http://localhost:5000>
+http://localhost:5000
 ```
 obs: fica a critério rodar todas as instalações no ambiente virtual
 
