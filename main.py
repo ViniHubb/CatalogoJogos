@@ -45,8 +45,7 @@ def HomePage ():
 @app.route('/catalogo', methods=['GET', 'POST'])
 def Catalogo():
     cursor = conexao.cursor()
-    cursor.execute("SELECT * FROM jogos")
-    #cursor.execute("SELECT * FROM jogos ORDER BY id DESC LIMIT 10")
+    cursor.execute("SELECT * FROM jogos ORDER BY id DESC LIMIT 10")
     resultados = cursor.fetchall()
 
     if request.method == 'POST':
@@ -90,8 +89,9 @@ def PaginaJogo():
         analises_com_nomes = cursor.fetchall()
 
         if current_user.is_authenticated:
-            for current_user.id in analises_com_nomes:
-                menssagem = 0
+            for analiseAtual in analises_com_nomes:
+                if current_user.id in analiseAtual:
+                    menssagem = 0
 
         if analises_com_nomes != []:
             query_media = "SELECT AVG(nota) FROM analises WHERE id_jogo = %s"

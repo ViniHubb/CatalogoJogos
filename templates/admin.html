@@ -174,7 +174,7 @@
                           <form id="botoesUser" method="post" action="/admin">
                             <h1>{{ usuarios[2] }}</h1>
                             <div>
-                              <button onclick="preencherFormularioEdicaoUsuario( '{{ usuarios[0] }}', '{{ usuarios[2] }}', '{{ usuarios[1] }}')">Editar</button>
+                              <button type="button" onclick="preencherFormularioEdicaoUsuario( '{{ usuarios[0] }}', '{{ usuarios[2] }}', '{{ usuarios[1] }}')">Editar</button>
                               <input type="hidden" name="excluirUser" value="{{ usuarios[0] }}">
                               <button type="submit">Excluir</button>
                             </div>
