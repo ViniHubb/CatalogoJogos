@@ -259,8 +259,8 @@ def Admin():
             nome = request.form['nomeUser']
             senha = request.form['senha']
             
-            query = "UPDATE usuarios SET email=%s, nome=%s, senha=%s  WHERE email=%s"
-            cursor.execute(query, (email, nome, senha, email))
+            query = "UPDATE usuarios SET  nome=%s, senha=%s  WHERE email=%s"
+            cursor.execute(query, (nome, senha, email))
             mensagem_sucesso = "Jogo atualizado com sucesso!"
             conexao.commit()
 
