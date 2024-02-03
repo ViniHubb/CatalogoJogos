@@ -18,3 +18,4 @@ obs: fica a critério rodar todas as instalações no ambiente virtual <br>
 <p>Agora você pode usar o nosso site - Catalogo de Jogos para explorar jogos, adicionar novos jogos, e muito mais! Divirta-se explorando o mundo dos games! </p>
 
 <p><h2>Essa é a Home-Page</h2></p>
+<img src="/static/img/HomePage.png">
