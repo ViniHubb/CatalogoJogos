@@ -8,7 +8,7 @@ conexao = mysql.connector.connect(
 
     host = 'localhost',
     user='root',
-    password='1234',
+    password='143786',
     database='catalogo',
 )
 
@@ -227,7 +227,9 @@ def Admin():
 
         elif 'excluir' in request.form:
             jogo_id = request.form['excluir']
+            query1="DELETE FROM analises WHERE id_jogo = %s"
             query = "DELETE FROM jogos WHERE id=%s"
+            cursor.execute(query1, (jogo_id,))
             cursor.execute(query, (jogo_id,))
             mensagem_sucesso = "Jogo excluido com sucesso"
             conexao.commit()
