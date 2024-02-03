@@ -9,11 +9,11 @@
 <p>1.Abra o seu ambiente Python no terminal do VSCode ou outro compilador.</p>
 <p>2.Execute o seguinte comando para instalar as dependências:</p>
 ```
-pip install flask flask-login
+$ pip install flask flask-login
 ```
 <p>3.Execute o aplicativo Flask usando o seguinte comando:</P>
 ```
-python app.py
+$ python app.py
 ```
 <p>4.Abra seu navegador e acesse http://localhost:5000</p>
 
